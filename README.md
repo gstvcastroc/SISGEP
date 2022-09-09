@@ -9,9 +9,9 @@
 <p align="center">
   Sistema Gerenciador de Projetos - Extensão Universitária
  <br> 
-  <a href="#">Documentação</a>
- · 
-  <a href="#">React</a>
+  <a href="Common/docs/Documentation.md">Documentação</a>
+ ·   
+  <a href="Common/docs/FrontDoc.md">React</a>
 </p>
 
 ## Enredo:
@@ -35,4 +35,5 @@ A ordem dos tratores não altera o pão duris.Nullam volutpat risus nec leo commod
 <a href="https://github.com/gstvcastroc" title="Gustavo Castro" rel="nofollow"><img src="Common/images/users/gustavo.png" alt="logo" data-canonical-src="https://github.com/gstvcastroc" width="100vw"/></a>
 <a href="https://github.com/halexmaciel" title="Halex Maciel" rel="nofollow"><img src="Common/images/users/halex.png" alt="logo" data-canonical-src="https://github.com/halexmaciel" width="100vw"/></a>
 <a href="https://github.com/Jenniferandreia" title="Jennifer Andreia" rel="nofollow"><img src="Common/images/users/jennifer.png" alt="logo" data-canonical-src="https://github.com/Jenniferandreia" width="100vw"/></a>
+<a href="https://github.com/MarceloMoreiraNunes" title="Marcelo Nunes" rel="nofollow"><img src="Common/images/users/marcelo.png" alt="logo" data-canonical-src="https://github.com/MarceloMoreiraNunes" width="100vw"/></a>
 <a href="https://github.com/WelbertJr" title="Welbert Júnior" rel="nofollow"><img src="Common/images/users/welbert.png" alt="logo" data-canonical-src="https://github.com/WelbertJr" width="100vw"/></a>
