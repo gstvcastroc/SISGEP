@@ -5,6 +5,11 @@ namespace SISGEP.Application.Entities
 {
     public class Person : Entity
     {
+        public Person()
+        {
+
+        }
+
         public Person(
             string name,
             string email,
@@ -41,10 +46,12 @@ namespace SISGEP.Application.Entities
 
         public PersonType PersonType { get; set; }
 
-        // Navigation property
+        // Navigation properties
         public Address Address { get; set; }
 
         public List<Project>? Projects { get; set; }
+
+        public List<AnsweredQuestionnaire>? Answers { get; set; }
     }
 
     public enum PersonType

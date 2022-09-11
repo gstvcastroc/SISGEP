@@ -1,16 +1,22 @@
 ﻿using System;
+using System.Collections.Generic;
 
 namespace SISGEP.Application.Entities
 {
     public class AnsweredQuestionnaire : Entity
     {
-        public AnsweredQuestionnaire(string structure, DateOnly date, Questionnaire questionnaire, Person benefited)
+        public AnsweredQuestionnaire()
+        {
+
+        }
+
+        public AnsweredQuestionnaire(string structure, DateOnly date, Questionnaire questionnaire, List<Person> benefiteds)
         {
             Id = Guid.NewGuid();
             Structure = structure;
             Date = date;
             Questionnaire = questionnaire;
-            Benefited = benefited;
+            Benefiteds = benefiteds;
         }
 
         public Guid Id { get; set; }
@@ -22,6 +28,6 @@ namespace SISGEP.Application.Entities
         // Navigation properties
         public Questionnaire Questionnaire { get; set; }
 
-        public Person Benefited { get; set; }
+        public List<Person> Benefiteds { get; set; }
     }
 }

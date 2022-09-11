@@ -4,6 +4,11 @@ namespace SISGEP.Application.Entities
 {
     public class Address : Entity
     {
+        public Address()
+        {
+
+        }
+
         public Address(
             string postalCode,
             string thoroughfare,
@@ -40,6 +45,7 @@ namespace SISGEP.Application.Entities
         public string State { get; set; }
 
         // Navigation property
+        public Guid PersonId { get; set; }
         public Person? Person { get; set; }
     }
 }

@@ -5,6 +5,11 @@ namespace SISGEP.Application.Entities
 {
     public class Questionnaire : Entity
     {
+        public Questionnaire()
+        {
+
+        }
+
         public Questionnaire(string name, DateOnly date, string structure, Project project)
         {
             Id = Guid.NewGuid();
@@ -22,7 +27,8 @@ namespace SISGEP.Application.Entities
 
         public string Structure { get; set; }
 
-        // Navigation property
+        // Navigation properties
+        public Guid ProjectId { get; set; }
         public Project Project { get; set; }
 
         public List<AnsweredQuestionnaire>? AnsweredQuestionnaires { get; set; }

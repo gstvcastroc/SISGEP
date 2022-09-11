@@ -1,4 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using SISGEP.Application.Data.Mappings;
 using SISGEP.Application.Entities;
 
 namespace SISGEP.Application.Data
@@ -21,13 +22,16 @@ namespace SISGEP.Application.Data
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            // TODO: adjust connection string.
-            optionsBuilder.UseNpgsql("Data Source=localhost;Initial Catalog=SISGEP;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False");
+            optionsBuilder.UseNpgsql("User ID=postgres;Password=root;Host=localhost;Port=5432;Database=SISGEP;");
         }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            // TODO: create database mappings and apply them.
+            modelBuilder.ApplyConfiguration(new PersonMap());
+            modelBuilder.ApplyConfiguration(new AddressMap());
+            modelBuilder.ApplyConfiguration(new ProjectMap());
+            modelBuilder.ApplyConfiguration(new QuestionnaireMap());
+            modelBuilder.ApplyConfiguration(new AnsweredQuestionnaireMap());
         }
     }
 }
