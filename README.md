@@ -11,7 +11,7 @@
  <br> 
   <a href="shared/docs/Documentation.md">Documentação</a>
  ·   
-  <a href="shared/docs/FrontDoc.md">Angular</a>
+  <a href="src/Frontend/SISGEP.Front/README.md">Angular</a>
 </p>
 
 ## Enredo:
