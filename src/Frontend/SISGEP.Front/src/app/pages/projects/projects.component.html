@@ -1,7 +1,10 @@
-<section class="bg-light py-3">
+<section class="py-3 my-4">
     <div class="container text-center">
       <h4 class="py-3"><b>Projetos <span class="bg-success-light p-2 text-white">Em Andamento</span></b></h4>
-      <hr class="mb-4"/>
+      <hr class="mb-4 pb-4"/>
+      <div class="text-center py-3 my-3">
+        <a class="btn btn-primary">Novo Projeto&nbsp;<i class="fa-solid fa-plus fa-beat hoverEfect" style="--fa-animation-duration: 2s;"></i></a>
+      </div>
       <div class="row">
         <div *ngFor="let p of projects" class="col-md-3 my-3">
           <div class="card" style="width: 18rem;">
@@ -9,6 +12,12 @@
             <div class="card-body">
               <h5 class="card-title">{{p.title}}</h5>
               <p class="card-text">{{p.description}}</p>
+              <footer>
+                <div class="container">
+                  <a style="cursor: pointer;"><i class="fa-regular fa-pen-to-square" data-toggle="tooltip" data-placement="right" title="Alterar"></i></a> &nbsp;
+                  <a style="cursor: pointer;"><i class="fa-solid fa-delete-left" data-toggle="tooltip" data-placement="right" title="Excluir"></i></a>
+                </div>
+              </footer>
             </div>
           </div>
         </div>
