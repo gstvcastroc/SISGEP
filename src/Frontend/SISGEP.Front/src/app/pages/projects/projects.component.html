@@ -1,0 +1,17 @@
+<section class="bg-light py-3">
+    <div class="container text-center">
+      <h4 class="py-3"><b>Projetos <span class="bg-success-light p-2 text-white">Em Andamento</span></b></h4>
+      <hr class="mb-4"/>
+      <div class="row">
+        <div *ngFor="let p of projects" class="col-md-3 my-3">
+          <div class="card" style="width: 18rem;">
+            <a (click)="dashboard(p.id)" style="cursor: pointer;"><img class="card-img-top" src="{{p.source}}"></a>
+            <div class="card-body">
+              <h5 class="card-title">{{p.title}}</h5>
+              <p class="card-text">{{p.description}}</p>
+            </div>
+          </div>
+        </div>
+      </div>
+  </div>
+</section>
