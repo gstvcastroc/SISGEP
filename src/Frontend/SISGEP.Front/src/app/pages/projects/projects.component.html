@@ -3,39 +3,12 @@
       <h4 class="py-3"><b>Projetos <span class="bg-success-light p-2 text-white">Em Andamento</span></b></h4>
       <hr class="mb-4"/>
       <div class="row">
-        <div class="col m-2">
+        <div *ngFor="let p of projects" class="col-md-3 my-3">
           <div class="card" style="width: 18rem;">
-            <img class="card-img-top" src="assets/images/thumbnail.jpg" alt="Card image cap">
+            <img class="card-img-top" src="{{p.source}}" alt="Card image cap">
             <div class="card-body">
-              <h5 class="card-title">Projeto Alpha</h5>
-              <p class="card-text">Mussum Ipsum, cacilds vidis litro abertis. Sapien in monti palavris qui num significa nadis i pareci latim.Delegadis gente finis, bibendum egestas augue arcu ut est.Tá deprimidis, eu conheço uma cachacis que pode alegrar sua vidis.Quem num gosta di mé, boa gentis num é.</p>
-            </div>
-          </div>
-        </div>
-        <div class="col m-2">
-          <div class="card" style="width: 18rem;">
-            <img class="card-img-top" src="assets/images/thumbnail.jpg" alt="Card image cap">
-            <div class="card-body">
-              <h5 class="card-title">Projeto Beta</h5>
-              <p class="card-text">Mussum Ipsum, cacilds vidis litro abertis. Sapien in monti palavris qui num significa nadis i pareci latim.Delegadis gente finis, bibendum egestas augue arcu ut est.Tá deprimidis, eu conheço uma cachacis que pode alegrar sua vidis.Quem num gosta di mé, boa gentis num é.</p>
-            </div>
-          </div>
-        </div>
-        <div class="col m-2">
-          <div class="card" style="width: 18rem;">
-            <img class="card-img-top" src="assets/images/thumbnail.jpg" alt="Card image cap">
-            <div class="card-body">
-              <h5 class="card-title">Projeto Gama</h5>
-              <p class="card-text">Mussum Ipsum, cacilds vidis litro abertis. Sapien in monti palavris qui num significa nadis i pareci latim.Delegadis gente finis, bibendum egestas augue arcu ut est.Tá deprimidis, eu conheço uma cachacis que pode alegrar sua vidis.Quem num gosta di mé, boa gentis num é.</p>
-            </div>
-          </div>
-        </div>
-        <div class="col m-2">
-          <div class="card" style="width: 18rem;">
-            <img class="card-img-top" src="assets/images/thumbnail.jpg" alt="Card image cap">
-            <div class="card-body">
-              <h5 class="card-title">Projeto Genesis</h5>
-              <p class="card-text">Mussum Ipsum, cacilds vidis litro abertis. Sapien in monti palavris qui num significa nadis i pareci latim.Delegadis gente finis, bibendum egestas augue arcu ut est.Tá deprimidis, eu conheço uma cachacis que pode alegrar sua vidis.Quem num gosta di mé, boa gentis num é.</p>
+              <h5 class="card-title">{{p.title}}</h5>
+              <p class="card-text">{{p.description}}</p>
             </div>
           </div>
         </div>
