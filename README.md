@@ -4,14 +4,18 @@
 <p>Sistemas de Informação</p>
 <p>Pontifícia Universidade Católica de Minas Gerais</p>
  </div>
-
+ 
+<p align="center">
+  <img src="shared/images/logo.png" alt="Logo SISGEP">  
+  <br>
+</p>
 
 <p align="center">
   Sistema Gerenciador de Projetos - Extensão Universitária
  <br> 
   <a href="shared/docs/Documentation.md">Documentação</a>
  ·   
-  <a href="shared/docs/FrontDoc.md">Angular</a>
+  <a href="src/Frontend/SISGEP.Front/README.md">Angular</a>
 </p>
 
 ## Enredo:
