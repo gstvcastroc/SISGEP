@@ -1,6 +1,7 @@
 :root {
   --hoverGreen: #6fab6d;
   --primeGreen: #437141;
+  --paleGold: #E6DED1;
 }
 
 .hoverEfect :hover {
@@ -10,6 +11,10 @@
 .bg-success-light {
   background: var(--primeGreen) !important;
   border-radius: 19px 0px 19px 0px;
+}
+
+.bg-pale-gold {
+  background-color: var(--paleGold);
 }
 
 .nav-image {
