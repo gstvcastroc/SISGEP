@@ -4,7 +4,11 @@
 <p>Sistemas de Informação</p>
 <p>Pontifícia Universidade Católica de Minas Gerais</p>
  </div>
-
+ 
+<p align="center">
+  <img src="shared/images/logo.png" alt="Logo SISGEP">  
+  <br>
+</p>
 
 <p align="center">
   Sistema Gerenciador de Projetos - Extensão Universitária
