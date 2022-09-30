@@ -1,6 +1,11 @@
 using Microsoft.AspNetCore.Builder;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using SISGEP.Application.Contracts;
+using SISGEP.Application.Data;
+using SISGEP.Application.Data.Repositories;
+using SISGEP.Application.Entities;
+using SISGEP.Application.Services;
 
 namespace SISGEP.API
 {
@@ -15,6 +20,12 @@ namespace SISGEP.API
             builder.Services.AddEndpointsApiExplorer();
 
             builder.Services.AddSwaggerGen();
+
+            builder.Services.AddDbContext<SISGEPContext>();
+
+            builder.Services.AddScoped<ISurveyService, SurveyService>();
+
+            builder.Services.AddScoped<IRepository<Survey>, Repository<Survey>>();
 
             var app = builder.Build();
 
