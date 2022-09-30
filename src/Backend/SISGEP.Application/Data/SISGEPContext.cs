@@ -14,9 +14,9 @@ namespace SISGEP.Application.Data
 
         public DbSet<Project> Projects { get; set; }
 
-        public DbSet<Questionnaire> Questionnaires { get; set; }
+        public DbSet<Survey> Surveys { get; set; }
 
-        public DbSet<AnsweredQuestionnaire> AnsweredQuestionnaires { get; set; }
+        public DbSet<FilledSurvey> FilledSurveys { get; set; }
 
 #pragma warning restore CS8618
 
@@ -30,8 +30,8 @@ namespace SISGEP.Application.Data
             modelBuilder.ApplyConfiguration(new PersonMap());
             modelBuilder.ApplyConfiguration(new AddressMap());
             modelBuilder.ApplyConfiguration(new ProjectMap());
-            modelBuilder.ApplyConfiguration(new QuestionnaireMap());
-            modelBuilder.ApplyConfiguration(new AnsweredQuestionnaireMap());
+            modelBuilder.ApplyConfiguration(new SurveyMap());
+            modelBuilder.ApplyConfiguration(new FilledSurveyMap());
         }
     }
 }

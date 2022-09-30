@@ -13,7 +13,7 @@ namespace SISGEP.Application.Migrations
                 name: "persons",
                 columns: table => new
                 {
-                    Id = table.Column<Guid>(type: "uuid", nullable: false),
+                    PersonId = table.Column<Guid>(type: "uuid", nullable: false),
                     Name = table.Column<string>(type: "varchar(256)", nullable: false),
                     Email = table.Column<string>(type: "varchar(256)", nullable: false),
                     Password = table.Column<string>(type: "varchar(256)", nullable: false),
@@ -23,136 +23,119 @@ namespace SISGEP.Application.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_persons", x => x.Id);
+                    table.PrimaryKey("PK_persons", x => x.PersonId);
                 });
 
             migrationBuilder.CreateTable(
                 name: "projects",
                 columns: table => new
                 {
-                    Id = table.Column<Guid>(type: "uuid", nullable: false),
+                    ProjectId = table.Column<Guid>(type: "uuid", nullable: false),
                     Name = table.Column<string>(type: "varchar(32)", nullable: false),
-                    Description = table.Column<string>(type: "varchar(256)", nullable: false),
+                    Description = table.Column<string>(type: "varchar(256)", nullable: true),
                     IsActive = table.Column<bool>(type: "boolean", nullable: false),
-                    StartDate = table.Column<DateOnly>(type: "date", nullable: false),
-                    EndDate = table.Column<DateOnly>(type: "date", nullable: false)
+                    StartDate = table.Column<DateTime>(type: "date", nullable: false),
+                    EndDate = table.Column<DateTime>(type: "date", nullable: true)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_projects", x => x.Id);
+                    table.PrimaryKey("PK_projects", x => x.ProjectId);
                 });
 
             migrationBuilder.CreateTable(
                 name: "addresses",
                 columns: table => new
                 {
-                    Id = table.Column<Guid>(type: "uuid", nullable: false),
+                    AddressId = table.Column<Guid>(type: "uuid", nullable: false),
                     PostalCode = table.Column<string>(type: "varchar(8)", nullable: false),
                     Thoroughfare = table.Column<string>(type: "varchar(256)", nullable: false),
                     Number = table.Column<int>(type: "smallserial", nullable: false),
                     Neighborhood = table.Column<string>(type: "varchar(64)", nullable: false),
-                    Complement = table.Column<string>(type: "varchar(128)", nullable: false),
+                    Complement = table.Column<string>(type: "varchar(128)", nullable: true),
                     City = table.Column<string>(type: "varchar(64)", nullable: false),
                     State = table.Column<string>(type: "varchar(16)", nullable: false),
                     PersonId = table.Column<Guid>(type: "uuid", nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_addresses", x => x.Id);
+                    table.PrimaryKey("PK_addresses", x => x.AddressId);
                     table.ForeignKey(
                         name: "FK_addresses_persons_PersonId",
                         column: x => x.PersonId,
                         principalTable: "persons",
-                        principalColumn: "Id",
+                        principalColumn: "PersonId",
                         onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateTable(
-                name: "PersonProject",
+                name: "person-project",
                 columns: table => new
                 {
-                    PersonsId = table.Column<Guid>(type: "uuid", nullable: false),
-                    ProjectsId = table.Column<Guid>(type: "uuid", nullable: false)
+                    PersonsPersonId = table.Column<Guid>(type: "uuid", nullable: false),
+                    ProjectsProjectId = table.Column<Guid>(type: "uuid", nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_PersonProject", x => new { x.PersonsId, x.ProjectsId });
+                    table.PrimaryKey("PK_PersonProject", x => new { x.PersonsPersonId, x.ProjectsProjectId });
                     table.ForeignKey(
-                        name: "FK_PersonProject_persons_PersonsId",
-                        column: x => x.PersonsId,
+                        name: "FK_PersonProject_persons_PersonsPersonId",
+                        column: x => x.PersonsPersonId,
                         principalTable: "persons",
-                        principalColumn: "Id",
+                        principalColumn: "PersonId",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
-                        name: "FK_PersonProject_projects_ProjectsId",
-                        column: x => x.ProjectsId,
+                        name: "FK_PersonProject_projects_ProjectsProjectId",
+                        column: x => x.ProjectsProjectId,
                         principalTable: "projects",
-                        principalColumn: "Id",
+                        principalColumn: "ProjectId",
                         onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateTable(
-                name: "questionnaires",
+                name: "surveys",
                 columns: table => new
                 {
-                    Id = table.Column<Guid>(type: "uuid", nullable: false),
+                    SurveyId = table.Column<Guid>(type: "uuid", nullable: false),
                     Name = table.Column<string>(type: "varchar(32)", nullable: false),
-                    Date = table.Column<DateOnly>(type: "date", nullable: false),
+                    Date = table.Column<DateTime>(type: "date", nullable: false),
                     Structure = table.Column<string>(type: "json", nullable: false),
                     ProjectId = table.Column<Guid>(type: "uuid", nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_questionnaires", x => x.Id);
+                    table.PrimaryKey("PK_surveys", x => x.SurveyId);
                     table.ForeignKey(
-                        name: "FK_questionnaires_projects_ProjectId",
+                        name: "FK_surveys_projects_ProjectId",
                         column: x => x.ProjectId,
                         principalTable: "projects",
-                        principalColumn: "Id",
+                        principalColumn: "ProjectId",
                         onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateTable(
-                name: "answered-questionnaires",
+                name: "filled-surveys",
                 columns: table => new
                 {
-                    Id = table.Column<Guid>(type: "uuid", nullable: false),
+                    FilledSurveyId = table.Column<Guid>(type: "uuid", nullable: false),
                     Structure = table.Column<string>(type: "json", nullable: false),
-                    Date = table.Column<DateOnly>(type: "date", nullable: false),
-                    QuestionnaireId = table.Column<Guid>(type: "uuid", nullable: false)
+                    Date = table.Column<DateTime>(type: "date", nullable: false),
+                    SurveyId = table.Column<Guid>(type: "uuid", nullable: false),
+                    PersonId = table.Column<Guid>(type: "uuid", nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_answered-questionnaires", x => x.Id);
+                    table.PrimaryKey("PK_filled-surveys", x => x.FilledSurveyId);
                     table.ForeignKey(
-                        name: "FK_answered-questionnaires_questionnaires_QuestionnaireId",
-                        column: x => x.QuestionnaireId,
-                        principalTable: "questionnaires",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
-                });
-
-            migrationBuilder.CreateTable(
-                name: "AnsweredQuestionnairePerson",
-                columns: table => new
-                {
-                    AnswersId = table.Column<Guid>(type: "uuid", nullable: false),
-                    BenefitedsId = table.Column<Guid>(type: "uuid", nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_AnsweredQuestionnairePerson", x => new { x.AnswersId, x.BenefitedsId });
-                    table.ForeignKey(
-                        name: "FK_AnsweredQuestionnairePerson_answered-questionnaires_Answers~",
-                        column: x => x.AnswersId,
-                        principalTable: "answered-questionnaires",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
-                    table.ForeignKey(
-                        name: "FK_AnsweredQuestionnairePerson_persons_BenefitedsId",
-                        column: x => x.BenefitedsId,
+                        name: "FK_filled-surveys_persons_PersonId",
+                        column: x => x.PersonId,
                         principalTable: "persons",
-                        principalColumn: "Id",
+                        principalColumn: "PersonId",
+                        onDelete: ReferentialAction.Cascade);
+                    table.ForeignKey(
+                        name: "FK_filled-surveys_surveys_SurveyId",
+                        column: x => x.SurveyId,
+                        principalTable: "surveys",
+                        principalColumn: "SurveyId",
                         onDelete: ReferentialAction.Cascade);
                 });
 
@@ -163,23 +146,23 @@ namespace SISGEP.Application.Migrations
                 unique: true);
 
             migrationBuilder.CreateIndex(
-                name: "IX_answered-questionnaires_QuestionnaireId",
-                table: "answered-questionnaires",
-                column: "QuestionnaireId");
+                name: "IX_filled-surveys_PersonId",
+                table: "filled-surveys",
+                column: "PersonId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_AnsweredQuestionnairePerson_BenefitedsId",
-                table: "AnsweredQuestionnairePerson",
-                column: "BenefitedsId");
+                name: "IX_filled-surveys_SurveyId",
+                table: "filled-surveys",
+                column: "SurveyId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_PersonProject_ProjectsId",
+                name: "IX_PersonProject_ProjectsProjectId",
                 table: "PersonProject",
-                column: "ProjectsId");
+                column: "ProjectsProjectId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_questionnaires_ProjectId",
-                table: "questionnaires",
+                name: "IX_surveys_ProjectId",
+                table: "surveys",
                 column: "ProjectId",
                 unique: true);
         }
@@ -190,19 +173,16 @@ namespace SISGEP.Application.Migrations
                 name: "addresses");
 
             migrationBuilder.DropTable(
-                name: "AnsweredQuestionnairePerson");
+                name: "filled-surveys");
 
             migrationBuilder.DropTable(
                 name: "PersonProject");
 
             migrationBuilder.DropTable(
-                name: "answered-questionnaires");
+                name: "surveys");
 
             migrationBuilder.DropTable(
                 name: "persons");
-
-            migrationBuilder.DropTable(
-                name: "questionnaires");
 
             migrationBuilder.DropTable(
                 name: "projects");

@@ -16,10 +16,10 @@ namespace SISGEP.Application.Data.Mappings
             builder.ToTable("projects");
 
             builder
-                .HasKey(project => project.Id);
+                .HasKey(project => project.ProjectId);
 
             builder
-                .Property(project => project.Id);
+                .Property(project => project.ProjectId);
 
             builder
                 .Property(project => project.Name)
@@ -28,8 +28,7 @@ namespace SISGEP.Application.Data.Mappings
 
             builder
                 .Property(project => project.Description)
-                .HasColumnType("varchar(256)")
-                .IsRequired();
+                .HasColumnType("varchar(256)");
 
             builder
                 .Property(project => project.IsActive)
@@ -43,13 +42,7 @@ namespace SISGEP.Application.Data.Mappings
 
             builder
                 .Property(project => project.EndDate)
-                .HasColumnType("date")
-                .IsRequired();
-
-            builder
-                .HasOne(project => project.Questionnaire)
-                .WithOne(questionnaire => questionnaire.Project)
-                .HasForeignKey<Questionnaire>(questionnaire => questionnaire.ProjectId);
+                .HasColumnType("date");
         }
     }
 }

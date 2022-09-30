@@ -1,39 +1,24 @@
-﻿using System;
+﻿using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
+using System;
 using System.Collections.Generic;
 
 namespace SISGEP.Application.Entities
 {
     public class Project : Entity
     {
-        public Project()
-        {
+        public Guid ProjectId { get; set; } = Guid.NewGuid();
 
-        }
+        public string Name { get; set; } = string.Empty; 
 
-        public Project(string name, bool isActive, DateOnly startDate, DateOnly endDate, string description)
-        {
-            Id = Guid.NewGuid();
-            Name = name;
-            IsActive = isActive;
-            StartDate = startDate;
-            EndDate = endDate;
-            Description = description;
-        }
+        public string? Description { get; set; } = string.Empty;
 
-        public Guid Id { get; set; }
+        public bool IsActive { get; set; } = true;
 
-        public string Name { get; set; }
+        public DateTime StartDate { get; set; }
 
-        public string Description { get; set; }
+        public DateTime? EndDate { get; set; }
 
-        public bool IsActive { get; set; }
-
-        public DateOnly StartDate { get; set; }
-
-        public DateOnly EndDate { get; set; }
-
-        // Navigation properties
-        public Questionnaire? Questionnaire { get; set; }
+        public Survey? Survey { get; set; } = new Survey();
 
         public List<Person>? Persons { get; set; }
     }

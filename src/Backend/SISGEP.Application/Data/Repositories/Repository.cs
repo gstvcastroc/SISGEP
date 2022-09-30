@@ -7,9 +7,18 @@ namespace SISGEP.Application.Data.Repositories
 {
     public class Repository<T> : IRepository<T> where T : Entity
     {
+        private readonly SISGEPContext _context;
+
+        public Repository(SISGEPContext context)
+        {
+            _context = context;
+        }
+
         public bool Create(T entity)
         {
-            throw new NotImplementedException();
+            _context.Add(entity);
+
+            return true;
         }
 
         public T GetById(Guid id)
