@@ -1,5 +1,4 @@
-﻿using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
-using System;
+﻿using System;
 using System.Collections.Generic;
 
 namespace SISGEP.Application.Entities

@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace SISGEP.Application.Services
+﻿namespace SISGEP.Application.Services
 {
     internal class ProjectService
     {

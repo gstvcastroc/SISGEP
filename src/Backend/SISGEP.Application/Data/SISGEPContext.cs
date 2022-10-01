@@ -6,8 +6,6 @@ namespace SISGEP.Application.Data
 {
     public class SISGEPContext : DbContext
     {
-#pragma warning disable CS8618
-
         public DbSet<Person> Persons { get; set; }
 
         public DbSet<Address> Addresses { get; set; }
@@ -17,8 +15,6 @@ namespace SISGEP.Application.Data
         public DbSet<Survey> Surveys { get; set; }
 
         public DbSet<FilledSurvey> FilledSurveys { get; set; }
-
-#pragma warning restore CS8618
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {

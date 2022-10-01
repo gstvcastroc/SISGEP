@@ -2,7 +2,6 @@
 using SISGEP.Application.Data;
 using SISGEP.Application.DTOs;
 using SISGEP.Application.Entities;
-using System;
 using System.Threading.Tasks;
 
 namespace SISGEP.Application.Services
