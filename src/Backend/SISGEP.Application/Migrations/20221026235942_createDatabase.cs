@@ -5,12 +5,12 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace SISGEP.Application.Migrations
 {
-    public partial class CreateDatabase : Migration
+    public partial class createDatabase : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.CreateTable(
-                name: "persons",
+                name: "person",
                 columns: table => new
                 {
                     PersonId = table.Column<Guid>(type: "uuid", nullable: false),
@@ -23,11 +23,11 @@ namespace SISGEP.Application.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_persons", x => x.PersonId);
+                    table.PrimaryKey("PK_person", x => x.PersonId);
                 });
 
             migrationBuilder.CreateTable(
-                name: "projects",
+                name: "project",
                 columns: table => new
                 {
                     ProjectId = table.Column<Guid>(type: "uuid", nullable: false),
@@ -39,11 +39,11 @@ namespace SISGEP.Application.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_projects", x => x.ProjectId);
+                    table.PrimaryKey("PK_project", x => x.ProjectId);
                 });
 
             migrationBuilder.CreateTable(
-                name: "addresses",
+                name: "address",
                 columns: table => new
                 {
                     AddressId = table.Column<Guid>(type: "uuid", nullable: false),
@@ -58,11 +58,11 @@ namespace SISGEP.Application.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_addresses", x => x.AddressId);
+                    table.PrimaryKey("PK_address", x => x.AddressId);
                     table.ForeignKey(
-                        name: "FK_addresses_persons_PersonId",
+                        name: "FK_address_person_PersonId",
                         column: x => x.PersonId,
-                        principalTable: "persons",
+                        principalTable: "person",
                         principalColumn: "PersonId",
                         onDelete: ReferentialAction.Cascade);
                 });
@@ -78,21 +78,21 @@ namespace SISGEP.Application.Migrations
                 {
                     table.PrimaryKey("PK_PersonProject", x => new { x.PersonsPersonId, x.ProjectsProjectId });
                     table.ForeignKey(
-                        name: "FK_PersonProject_persons_PersonsPersonId",
+                        name: "FK_PersonProject_person_PersonsPersonId",
                         column: x => x.PersonsPersonId,
-                        principalTable: "persons",
+                        principalTable: "person",
                         principalColumn: "PersonId",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
-                        name: "FK_PersonProject_projects_ProjectsProjectId",
+                        name: "FK_PersonProject_project_ProjectsProjectId",
                         column: x => x.ProjectsProjectId,
-                        principalTable: "projects",
+                        principalTable: "project",
                         principalColumn: "ProjectId",
                         onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateTable(
-                name: "surveys",
+                name: "survey",
                 columns: table => new
                 {
                     SurveyId = table.Column<Guid>(type: "uuid", nullable: false),
@@ -103,17 +103,17 @@ namespace SISGEP.Application.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_surveys", x => x.SurveyId);
+                    table.PrimaryKey("PK_survey", x => x.SurveyId);
                     table.ForeignKey(
-                        name: "FK_surveys_projects_ProjectId",
+                        name: "FK_survey_project_ProjectId",
                         column: x => x.ProjectId,
-                        principalTable: "projects",
+                        principalTable: "project",
                         principalColumn: "ProjectId",
                         onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateTable(
-                name: "filled-surveys",
+                name: "filled-survey",
                 columns: table => new
                 {
                     FilledSurveyId = table.Column<Guid>(type: "uuid", nullable: false),
@@ -124,45 +124,45 @@ namespace SISGEP.Application.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_filled-surveys", x => x.FilledSurveyId);
+                    table.PrimaryKey("PK_filled-survey", x => x.FilledSurveyId);
                     table.ForeignKey(
-                        name: "FK_filled-surveys_persons_PersonId",
+                        name: "FK_filled-survey_person_PersonId",
                         column: x => x.PersonId,
-                        principalTable: "persons",
+                        principalTable: "person",
                         principalColumn: "PersonId",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
-                        name: "FK_filled-surveys_surveys_SurveyId",
+                        name: "FK_filled-survey_survey_SurveyId",
                         column: x => x.SurveyId,
-                        principalTable: "surveys",
+                        principalTable: "survey",
                         principalColumn: "SurveyId",
                         onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateIndex(
-                name: "IX_addresses_PersonId",
-                table: "addresses",
+                name: "IX_address_PersonId",
+                table: "address",
                 column: "PersonId",
                 unique: true);
 
             migrationBuilder.CreateIndex(
-                name: "IX_filled-surveys_PersonId",
-                table: "filled-surveys",
+                name: "IX_filled-survey_PersonId",
+                table: "filled-survey",
                 column: "PersonId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_filled-surveys_SurveyId",
-                table: "filled-surveys",
+                name: "IX_filled-survey_SurveyId",
+                table: "filled-survey",
                 column: "SurveyId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_PersonProject_ProjectsProjectId",
-                table: "PersonProject",
+                table: "person-project",
                 column: "ProjectsProjectId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_surveys_ProjectId",
-                table: "surveys",
+                name: "IX_survey_ProjectId",
+                table: "survey",
                 column: "ProjectId",
                 unique: true);
         }
@@ -170,22 +170,22 @@ namespace SISGEP.Application.Migrations
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropTable(
-                name: "addresses");
+                name: "address");
 
             migrationBuilder.DropTable(
-                name: "filled-surveys");
+                name: "filled-survey");
 
             migrationBuilder.DropTable(
                 name: "PersonProject");
 
             migrationBuilder.DropTable(
-                name: "surveys");
+                name: "survey");
 
             migrationBuilder.DropTable(
-                name: "persons");
+                name: "person");
 
             migrationBuilder.DropTable(
-                name: "projects");
+                name: "project");
         }
     }
 }

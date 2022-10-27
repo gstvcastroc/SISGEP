@@ -23,11 +23,15 @@ namespace SISGEP.API
 
             builder.Services.AddDbContext<SISGEPContext>();
 
+            builder.Services.AddScoped<IProjectService, ProjectService>();
+
             builder.Services.AddScoped<IPersonService, PersonService>();
 
             builder.Services.AddScoped<ISurveyService, SurveyService>();
 
             builder.Services.AddScoped<IRepository<Person>, Repository<Person>>();
+
+            builder.Services.AddScoped<IRepository<Project>, Repository<Project>>();
 
             builder.Services.AddScoped<IPersonRepository, PersonRepository>();
 

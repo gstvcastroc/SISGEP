@@ -8,7 +8,7 @@ namespace SISGEP.Application.Data.Mappings
     {
         public void Configure(EntityTypeBuilder<Project> builder)
         {
-            builder.ToTable("projects");
+            builder.ToTable("project");
 
             builder
                 .HasKey(project => project.ProjectId);

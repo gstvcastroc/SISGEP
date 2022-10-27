@@ -59,7 +59,7 @@ namespace SISGEP.Application.Services
 
         public async Task<Person> GetPersonByIdAsync(Guid id)
         {
-            var person = await _personRepository.GetPersonById(id);
+            var person = await _genericRepository.GetById(id);
 
             return person;
         }

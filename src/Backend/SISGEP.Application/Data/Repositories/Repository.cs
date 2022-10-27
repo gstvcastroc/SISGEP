@@ -23,14 +23,26 @@ namespace SISGEP.Application.Data.Repositories
             return true;
         }
 
-        public async Task<T> GetById(Guid id)
+        public async Task<T>? GetById(Guid id)
         {
+            if (typeof(T) == typeof(Person))
+            {
+                var teste = await _context.Persons.FindAsync(id);
+
+                if (teste is null)
+                {
+                    return null;
+                }
+
+                return (T)Convert.ChangeType(teste, typeof(Person));
+            }
+
             var entity = await _context.FindAsync<T>(id);
 
             return entity;
         }
 
-        public IEnumerable<T> GetAll(string[] includes = null)
+        public IEnumerable<T> GetAll(string[]? includes = null)
         {
             var entities = _context.Set<T>().AsQueryable();
 
@@ -57,6 +69,11 @@ namespace SISGEP.Application.Data.Repositories
         public async Task<bool> Delete(Guid id)
         {
             var entity = await _context.FindAsync<T>(id);
+
+            if (entity is null)
+            {
+                return false;
+            }
 
             _context.Remove(entity);
 

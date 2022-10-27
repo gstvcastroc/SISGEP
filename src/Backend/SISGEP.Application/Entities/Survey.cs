@@ -11,7 +11,7 @@ namespace SISGEP.Application.Entities
 
         public DateTime Date { get; set; }
 
-        public string Structure { get; set; } = string.Empty;
+        public string Structure { get; set; } = "{}";
 
         public Guid ProjectId { get; set; }
 

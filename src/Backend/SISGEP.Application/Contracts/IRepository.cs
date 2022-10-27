@@ -9,7 +9,7 @@ namespace SISGEP.Application.Contracts
     {
         bool Create(T entity);
 
-        Task<T> GetById(Guid id);
+        Task<T>? GetById(Guid id);
 
         IEnumerable<T> GetAll(string[] includes);
 

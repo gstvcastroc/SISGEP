@@ -8,7 +8,7 @@ namespace SISGEP.Application.Data.Mappings
     {
         public void Configure(EntityTypeBuilder<Survey> builder)
         {
-            builder.ToTable("surveys");
+            builder.ToTable("survey");
 
             builder
                 .HasKey(survey => survey.SurveyId);

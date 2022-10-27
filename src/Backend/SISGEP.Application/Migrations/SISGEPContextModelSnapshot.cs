@@ -17,7 +17,7 @@ namespace SISGEP.Application.Migrations
         {
 #pragma warning disable 612, 618
             modelBuilder
-                .HasAnnotation("ProductVersion", "6.0.9")
+                .HasAnnotation("ProductVersion", "6.0.8")
                 .HasAnnotation("Relational:MaxIdentifierLength", 63);
 
             NpgsqlModelBuilderExtensions.UseIdentityByDefaultColumns(modelBuilder);
@@ -77,7 +77,7 @@ namespace SISGEP.Application.Migrations
                     b.HasIndex("PersonId")
                         .IsUnique();
 
-                    b.ToTable("addresses", (string)null);
+                    b.ToTable("address", (string)null);
                 });
 
             modelBuilder.Entity("SISGEP.Application.Entities.FilledSurvey", b =>
@@ -105,7 +105,7 @@ namespace SISGEP.Application.Migrations
 
                     b.HasIndex("SurveyId");
 
-                    b.ToTable("filled-surveys", (string)null);
+                    b.ToTable("filled-survey", (string)null);
                 });
 
             modelBuilder.Entity("SISGEP.Application.Entities.Person", b =>
@@ -139,7 +139,7 @@ namespace SISGEP.Application.Migrations
 
                     b.HasKey("PersonId");
 
-                    b.ToTable("persons", (string)null);
+                    b.ToTable("person", (string)null);
                 });
 
             modelBuilder.Entity("SISGEP.Application.Entities.Project", b =>
@@ -161,12 +161,13 @@ namespace SISGEP.Application.Migrations
                         .IsRequired()
                         .HasColumnType("varchar(32)");
 
-                    b.Property<DateTime>("StartDate")
+                    b.Property<DateTime?>("StartDate")
+                        .IsRequired()
                         .HasColumnType("date");
 
                     b.HasKey("ProjectId");
 
-                    b.ToTable("projects", (string)null);
+                    b.ToTable("project", (string)null);
                 });
 
             modelBuilder.Entity("SISGEP.Application.Entities.Survey", b =>
@@ -194,7 +195,7 @@ namespace SISGEP.Application.Migrations
                     b.HasIndex("ProjectId")
                         .IsUnique();
 
-                    b.ToTable("surveys", (string)null);
+                    b.ToTable("survey", (string)null);
                 });
 
             modelBuilder.Entity("PersonProject", b =>
