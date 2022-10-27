@@ -33,9 +33,9 @@ namespace SISGEP.API
 
             builder.Services.AddScoped<IRepository<Project>, Repository<Project>>();
 
-            builder.Services.AddScoped<IPersonRepository, PersonRepository>();
-
             builder.Services.AddScoped<IRepository<Survey>, Repository<Survey>>();
+
+            builder.Services.AddScoped<IRepository<FilledSurvey>, Repository<FilledSurvey>>();
 
             var app = builder.Build();
 

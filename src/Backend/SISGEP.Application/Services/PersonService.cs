@@ -11,17 +11,14 @@ namespace SISGEP.Application.Services
     public class PersonService : IPersonService
     {
         private readonly SISGEPContext _context;
-        private readonly IRepository<Person> _genericRepository;
-        private readonly IPersonRepository _personRepository;
+        private readonly IRepository<Person> _repository;
 
         public PersonService(
             SISGEPContext context,
-            IRepository<Person> genericRepository,
-            IPersonRepository personRepository)
+            IRepository<Person> repository)
         {
             _context = context;
-            _genericRepository = genericRepository;
-            _personRepository = personRepository;
+            _repository = repository;
         }
 
         public async Task<bool> CreatePersonAsync(EditPersonDTO dto)
@@ -50,7 +47,7 @@ namespace SISGEP.Application.Services
 
             person.Address = address;
 
-            _genericRepository.Create(person);
+            _repository.Create(person);
 
             await _context.SaveChangesAsync();
 
@@ -59,21 +56,21 @@ namespace SISGEP.Application.Services
 
         public async Task<Person> GetPersonByIdAsync(Guid id)
         {
-            var person = await _genericRepository.GetById(id);
+            var person = await _repository.GetById(id);
 
             return person;
         }
 
         public IEnumerable<Person> GetAllPersonsAsync()
         {
-            var persons = _genericRepository.GetAll(includes: new string[] { "Address" });
+            var persons = _repository.GetAll(includes: new string[] { "Address" });
 
             return persons;
         }
 
         public async Task<bool> UpdatePersonAsync(Guid id, EditPersonDTO dto)
         {
-            var person = await _personRepository.GetPersonById(id);
+            var person = await _repository.GetById(id);
 
             if (person is null)
             {
@@ -91,7 +88,7 @@ namespace SISGEP.Application.Services
 
         public async Task<bool> DeletePersonAsync(Guid id)
         {
-            await _genericRepository.Delete(id);
+            await _repository.Delete(id);
 
             await _context.SaveChangesAsync();
 

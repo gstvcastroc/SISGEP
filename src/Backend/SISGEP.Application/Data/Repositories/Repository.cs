@@ -23,18 +23,50 @@ namespace SISGEP.Application.Data.Repositories
             return true;
         }
 
+#pragma warning disable CS8603 // Possible null reference return.
         public async Task<T>? GetById(Guid id)
         {
-            if (typeof(T) == typeof(Person))
+            switch (typeof(T))
             {
-                var teste = await _context.Persons.FindAsync(id);
+                case Type personType when personType == typeof(Person):
 
-                if (teste is null)
-                {
-                    return null;
-                }
+                    var person = await _context.Persons
+                        .Include(person => person.Projects)
+                        .Include(person => person.FilledSurveys)
+                        .FirstOrDefaultAsync(person => person.PersonId == id);
 
-                return (T)Convert.ChangeType(teste, typeof(Person));
+                    if (person is null)
+                    {
+                        return null;
+
+                    }
+
+                    return (T)Convert.ChangeType(person, typeof(Person));
+
+                case Type projectType when projectType == typeof(Project):
+
+                    var project = await _context.Projects.FindAsync(id);
+
+                    if (project is null)
+                    {
+                        return null;
+                    }
+
+                    return (T)Convert.ChangeType(project, typeof(Project));
+
+                case Type surveyType when surveyType == typeof(Survey):
+
+                    var survey = await _context.Surveys.FindAsync(id);
+
+                    if (survey is null)
+                    {
+                        return null;
+                    }
+
+                    return (T)Convert.ChangeType(survey, typeof(Survey));
+
+                default:
+                    break;
             }
 
             var entity = await _context.FindAsync<T>(id);
@@ -42,7 +74,7 @@ namespace SISGEP.Application.Data.Repositories
             return entity;
         }
 
-        public IEnumerable<T> GetAll(string[]? includes = null)
+        public IEnumerable<T>? GetAll(string[]? includes = null)
         {
             var entities = _context.Set<T>().AsQueryable();
 
@@ -58,6 +90,7 @@ namespace SISGEP.Application.Data.Repositories
 
             return entities;
         }
+#pragma warning restore CS8603 // Possible null reference return.
 
         public bool Update(T entity)
         {

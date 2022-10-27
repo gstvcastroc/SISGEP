@@ -13,12 +13,12 @@ namespace SISGEP.Application.Services
     public class ProjectService : IProjectService
     {
         private readonly SISGEPContext _context;
-        private readonly IRepository<Project> _genericRepository;
+        private readonly IRepository<Project> _repository;
 
-        public ProjectService(SISGEPContext context, IRepository<Project> genericRepository)
+        public ProjectService(SISGEPContext context, IRepository<Project> repository)
         {
             _context = context;
-            _genericRepository = genericRepository;
+            _repository = repository;
         }
 
         public async Task<bool> CreateProjectAsync(EditProjectDTO dto)
@@ -32,7 +32,7 @@ namespace SISGEP.Application.Services
                 EndDate = dto.EndDate,
             };
 
-            _genericRepository.Create(project);
+            _repository.Create(project);
 
             await _context.SaveChangesAsync();
 
@@ -41,21 +41,21 @@ namespace SISGEP.Application.Services
 
         public async Task<Project> GetProjectByIdAsync(Guid id)
         {
-            var project = await _genericRepository.GetById(id);
+            var project = await _repository.GetById(id);
 
             return project;
         }
 
         public IEnumerable<Project> GetAllProjectsAsync()
         {
-            var projects = _genericRepository.GetAll(new string[] { });
+            var projects = _repository.GetAll(new string[] { });
 
             return projects;
         }
 
         public async Task<bool> UpdateProjectAsync(Guid id, EditProjectDTO dto)
         {
-            var project = await _genericRepository.GetById(id);
+            var project = await _repository.GetById(id);
 
             if (project is null)
             {
@@ -64,7 +64,7 @@ namespace SISGEP.Application.Services
 
             project.Update(dto);
 
-            _genericRepository.Update(project);
+            _repository.Update(project);
 
             await _context.SaveChangesAsync();
 
@@ -73,7 +73,7 @@ namespace SISGEP.Application.Services
 
         public async Task<bool> DeleteProjectAsync(Guid id)
         {
-            await _genericRepository.Delete(id);
+            await _repository.Delete(id);
 
             await _context.SaveChangesAsync();
 

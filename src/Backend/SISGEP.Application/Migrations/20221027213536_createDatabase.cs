@@ -76,15 +76,15 @@ namespace SISGEP.Application.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_PersonProject", x => new { x.PersonsPersonId, x.ProjectsProjectId });
+                    table.PrimaryKey("PK_person-project", x => new { x.PersonsPersonId, x.ProjectsProjectId });
                     table.ForeignKey(
-                        name: "FK_PersonProject_person_PersonsPersonId",
+                        name: "FK_person-project_person_PersonsPersonId",
                         column: x => x.PersonsPersonId,
                         principalTable: "person",
                         principalColumn: "PersonId",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
-                        name: "FK_PersonProject_project_ProjectsProjectId",
+                        name: "FK_person-project_project_ProjectsProjectId",
                         column: x => x.ProjectsProjectId,
                         principalTable: "project",
                         principalColumn: "ProjectId",
@@ -156,7 +156,7 @@ namespace SISGEP.Application.Migrations
                 column: "SurveyId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_PersonProject_ProjectsProjectId",
+                name: "IX_person-project_ProjectsProjectId",
                 table: "person-project",
                 column: "ProjectsProjectId");
 
@@ -176,7 +176,7 @@ namespace SISGEP.Application.Migrations
                 name: "filled-survey");
 
             migrationBuilder.DropTable(
-                name: "PersonProject");
+                name: "person-project");
 
             migrationBuilder.DropTable(
                 name: "survey");

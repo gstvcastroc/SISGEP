@@ -11,7 +11,7 @@ namespace SISGEP.Application.Contracts
 
         Task<T>? GetById(Guid id);
 
-        IEnumerable<T> GetAll(string[] includes);
+        IEnumerable<T>? GetAll(string[]? includes = null);
 
         bool Update(T entity);
 
