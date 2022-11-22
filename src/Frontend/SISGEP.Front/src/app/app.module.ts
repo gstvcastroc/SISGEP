@@ -8,6 +8,9 @@ import { HomeComponent } from './pages/home/home.component';
 import { ProjectsComponent } from './pages/projects/projects.component';
 import { MasterComponent } from './pages/master/master.component';
 import { QuestionaryComponent } from './pages/questionary/questionary.component';
+import { ModalComponent } from './pages/modal/modal.component';
+
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 @NgModule({
   declarations: [
@@ -15,12 +18,14 @@ import { QuestionaryComponent } from './pages/questionary/questionary.component'
     HomeComponent,
     ProjectsComponent,
     MasterComponent,
-    QuestionaryComponent
+    QuestionaryComponent,
+    ModalComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    HttpClientModule
+    HttpClientModule,
+    NgbModule
   ],
   providers: [],
   bootstrap: [AppComponent]

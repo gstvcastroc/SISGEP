@@ -27,7 +27,8 @@
               "src/assets"
             ],
             "styles": [
-              "src/styles.css"
+              "src/styles.css",
+              "node_modules/bootstrap/dist/css/bootstrap.min.css"
             ],
             "scripts": []
           },
@@ -102,5 +103,7 @@
       }
     }
   },
-  "defaultProject": "SISGEP.Front"
+  "cli": {
+    "analytics": "983c34fb-dd96-4f85-b47f-ac9b6c4db6c8"
+  }
 }
