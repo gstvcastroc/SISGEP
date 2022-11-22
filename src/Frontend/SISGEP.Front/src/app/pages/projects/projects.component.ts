@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
 
 @Component({
   selector: 'app-projects',
@@ -7,22 +8,55 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ProjectsComponent implements OnInit {
 
-  constructor() { }
+  constructor(private _httpClient: HttpClient) { }
 
   ngOnInit(): void {
   }
 
-  projects: any = [
-    { id : 1, source: '../assets/images/thumbnail.jpg', title: 'Projeto Alpha', description: 'Mussum Ipsum, cacilds vidis litro abertis. Interagi no mé, cursus quis, vehicula ac nisi.Praesent vel viverra nisi. Mauris aliquet nunc non turpis scelerisque, eget.Aenean aliquam molestie leo, vitae iaculis nisl.Quem num gosta di mé, boa gentis num é.' },
-    { id : 2, source: '../assets/images/thumbnail.jpg', title: 'Projeto Beta', description: 'Mussum Ipsum, cacilds vidis litro abertis. Interagi no mé, cursus quis, vehicula ac nisi.Praesent vel viverra nisi. Mauris aliquet nunc non turpis scelerisque, eget.Aenean aliquam molestie leo, vitae iaculis nisl.Quem num gosta di mé, boa gentis num é.' },
-    { id : 3, source: '../assets/images/thumbnail.jpg', title: 'Projeto Gama', description: 'Mussum Ipsum, cacilds vidis litro abertis. Interagi no mé, cursus quis, vehicula ac nisi.Praesent vel viverra nisi. Mauris aliquet nunc non turpis scelerisque, eget.Aenean aliquam molestie leo, vitae iaculis nisl.Quem num gosta di mé, boa gentis num é.' },
-    { id : 4, source: '../assets/images/thumbnail.jpg', title: 'Projeto Genesis', description: 'Mussum Ipsum, cacilds vidis litro abertis. Interagi no mé, cursus quis, vehicula ac nisi.Praesent vel viverra nisi. Mauris aliquet nunc non turpis scelerisque, eget.Aenean aliquam molestie leo, vitae iaculis nisl.Quem num gosta di mé, boa gentis num é.'},
-    { id : 5, source: '../assets/images/thumbnail.jpg', title: 'Projeto Morpheus', description: 'Mussum Ipsum, cacilds vidis litro abertis. Interagi no mé, cursus quis, vehicula ac nisi.Praesent vel viverra nisi. Mauris aliquet nunc non turpis scelerisque, eget.Aenean aliquam molestie leo, vitae iaculis nisl.Quem num gosta di mé, boa gentis num é.'},
-    { id : 6, source: '../assets/images/thumbnail.jpg', title: 'Projeto Andromeda', description: 'Mussum Ipsum, cacilds vidis litro abertis. Interagi no mé, cursus quis, vehicula ac nisi.Praesent vel viverra nisi. Mauris aliquet nunc non turpis scelerisque, eget.Aenean aliquam molestie leo, vitae iaculis nisl.Quem num gosta di mé, boa gentis num é.' },
-    { id : 7, source: '../assets/images/thumbnail.jpg', title: 'Projeto Orion', description: 'Mussum Ipsum, cacilds vidis litro abertis. Interagi no mé, cursus quis, vehicula ac nisi.Praesent vel viverra nisi. Mauris aliquet nunc non turpis scelerisque, eget.Aenean aliquam molestie leo, vitae iaculis nisl.Quem num gosta di mé, boa gentis num é.' },
-    { id : 8, source: '../assets/images/thumbnail.jpg', title: 'Projeto Archiles', description: 'Mussum Ipsum, cacilds vidis litro abertis. Interagi no mé, cursus quis, vehicula ac nisi.Praesent vel viverra nisi. Mauris aliquet nunc non turpis scelerisque, eget.Aenean aliquam molestie leo, vitae iaculis nisl.Quem num gosta di mé, boa gentis num é.'}];
+  loadProjects() : Project[] {
 
-  dashboard(id: number): void{
+    /*this._httpClient.get<Project[]>('https://localhost:5001/api/Project').subscribe(result => { projectsList = result }); Chamada HTTP para preencher a entidade*/
+
+    const projectsList: Project[] = [
+      { id: 1, title: 'Alpha', description: 'Mussum Ipsum, cacilds vidis litro abertis.' },
+      { id: 2, title: 'Beta', description: 'Mussum Ipsum, cacilds vidis litro abertis.' },
+      { id: 3, title: 'Gama', description: 'Mussum Ipsum, cacilds vidis litro abertis.' },
+      { id: 4, title: 'Andromeda', description: 'Mussum Ipsum, cacilds vidis litro abertis.' },
+      { id: 5, title: 'Orion', description: 'Mussum Ipsum, cacilds vidis litro abertis.' },
+      { id: 6, title: 'Marte', description: 'Mussum Ipsum, cacilds vidis litro abertis.' },
+      { id: 7, title: 'Saturno', description: 'Mussum Ipsum, cacilds vidis litro abertis.' }
+    ];
+
+    return projectsList;
+  }
+
+  showDashboard(): void{
+
+    /*Criar chamada do modal e prencher o dataModal com os dados retornados do HTTP GET*/
     alert('bateu');
   }
+
+  newProject() : void{
+
+    /*Criar chamada do modal e prencher o dataModal com os dados retornados do HTTP GET*/
+    alert('bateu');
+  }
+
+  editProject(id : string) : void{
+
+    /*Criar chamada do modal e prencher o dataModal com os dados retornados do HTTP GET*/
+    alert('bateu: ' +  id);
+  }
+
+  deleteProject(id : string) : void{
+
+    /*Criar chamada do modal e prencher o dataModal com os dados retornados do HTTP GET*/
+    alert('bateu: ' +  id);
+  }
+}
+
+interface Project {
+  id: number;
+  title: string;
+  description: string;
 }
