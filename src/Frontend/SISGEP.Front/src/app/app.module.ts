@@ -12,6 +12,7 @@ import { ModalComponent } from './pages/modal/modal.component';
 
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { SafePipe } from './pipes/safe.pipe';
+import { CreateProjectComponent } from './pages/projects/create/create-project/create-project.component';
 
 @NgModule({
   declarations: [
@@ -21,7 +22,8 @@ import { SafePipe } from './pipes/safe.pipe';
     MasterComponent,
     QuestionaryComponent,
     ModalComponent,
-    SafePipe
+    SafePipe,
+    CreateProjectComponent
   ],
   imports: [
     BrowserModule,

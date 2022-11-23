@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { NgbModal, ModalDismissReasons } from '@ng-bootstrap/ng-bootstrap';
 import { ModalComponent } from '../modal/modal.component';
+import { CreateProjectComponent } from './create/create-project/create-project.component';
 
 @Component({
   selector: 'app-projects',
@@ -45,9 +46,11 @@ export class ProjectsComponent implements OnInit {
   }
 
   newProject() : void{
-
-    /*Criar chamada do modal e prencher o dataModal com os dados retornados do HTTP GET*/
-    alert('bateu');
+    const _modalRef = this._modalService.open(CreateProjectComponent,
+      {
+        size: 'lg',
+        modalDialogClass: 'modal-dialog modal-dialog-centered'
+      });
   }
 
   editProject(id : string) : void{
