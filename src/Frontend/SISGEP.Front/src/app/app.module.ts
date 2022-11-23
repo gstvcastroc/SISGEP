@@ -11,6 +11,7 @@ import { QuestionaryComponent } from './pages/questionary/questionary.component'
 import { ModalComponent } from './pages/modal/modal.component';
 
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { SafePipe } from './pipes/safe.pipe';
 
 @NgModule({
   declarations: [
@@ -19,7 +20,8 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
     ProjectsComponent,
     MasterComponent,
     QuestionaryComponent,
-    ModalComponent
+    ModalComponent,
+    SafePipe
   ],
   imports: [
     BrowserModule,

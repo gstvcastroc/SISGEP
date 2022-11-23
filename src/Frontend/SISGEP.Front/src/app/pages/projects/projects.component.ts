@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { NgbModal, ModalDismissReasons } from '@ng-bootstrap/ng-bootstrap';
+import { ModalComponent } from '../modal/modal.component';
 
 @Component({
   selector: 'app-projects',
@@ -8,7 +10,7 @@ import { HttpClient } from '@angular/common/http';
 })
 export class ProjectsComponent implements OnInit {
 
-  constructor(private _httpClient: HttpClient) { }
+  constructor(private _httpClient: HttpClient, private _modalService: NgbModal) { }
 
   ngOnInit(): void {
   }
@@ -31,9 +33,15 @@ export class ProjectsComponent implements OnInit {
   }
 
   showDashboard(): void{
+    const _modalRef = this._modalService.open(ModalComponent,
+      {
+        size: 'lg',
+        modalDialogClass: 'modal-dialog modal-dialog-centered'
+      });
 
-    /*Criar chamada do modal e prencher o dataModal com os dados retornados do HTTP GET*/
-    alert('bateu');
+      let urlEmbed: string ='https://datastudio.google.com/embed/reporting/ebd93138-721e-406d-bf69-6d995a6dd63a/page/52A7C';
+
+      _modalRef.componentInstance.url = urlEmbed;
   }
 
   newProject() : void{
