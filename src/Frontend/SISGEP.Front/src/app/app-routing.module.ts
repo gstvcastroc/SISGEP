@@ -6,11 +6,11 @@ import { ProjectsComponent } from './pages/projects/projects.component';
 import { QuestionaryComponent } from './pages/questionary/questionary.component';
 
 const routes: Routes = [
-  {
+   {
     path: '',
     component: MasterComponent,
     children: [
-    { path: 'home', component: HomeComponent },
+    { path: '', component: HomeComponent },
     { path: 'projects', component: ProjectsComponent },
     { path: 'questionary', component: QuestionaryComponent }
     ]
