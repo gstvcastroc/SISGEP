@@ -3,6 +3,9 @@ import { HttpClient } from '@angular/common/http';
 import { NgbModal, ModalDismissReasons } from '@ng-bootstrap/ng-bootstrap';
 import { ModalComponent } from '../modal/modal.component';
 import { CreateProjectComponent } from './create/create-project/create-project.component';
+import { Project } from 'src/app/interface/project-interface';
+import { AlterProjectComponent } from './alter/alter-project/alter-project.component';
+import { DeleteProjectComponent } from './delete/delete-project/delete-project.component';
 
 @Component({
   selector: 'app-projects',
@@ -20,7 +23,7 @@ export class ProjectsComponent implements OnInit {
 
     /*this._httpClient.get<Project[]>('https://localhost:5001/api/Project').subscribe(result => { projectsList = result }); Chamada HTTP para preencher a entidade*/
 
-    const projectsList: Project[] = [
+    let projectsList: Project[] = [
       { id: 1, title: 'Alpha', description: 'Mussum Ipsum, cacilds vidis litro abertis.' },
       { id: 2, title: 'Beta', description: 'Mussum Ipsum, cacilds vidis litro abertis.' },
       { id: 3, title: 'Gama', description: 'Mussum Ipsum, cacilds vidis litro abertis.' },
@@ -34,7 +37,7 @@ export class ProjectsComponent implements OnInit {
   }
 
   showDashboard(): void{
-    const _modalRef = this._modalService.open(ModalComponent,
+    let _modalRef = this._modalService.open(ModalComponent,
       {
         size: 'lg',
         modalDialogClass: 'modal-dialog modal-dialog-centered'
@@ -46,7 +49,7 @@ export class ProjectsComponent implements OnInit {
   }
 
   newProject() : void{
-    const _modalRef = this._modalService.open(CreateProjectComponent,
+    this._modalService.open(CreateProjectComponent,
       {
         size: 'lg',
         modalDialogClass: 'modal-dialog modal-dialog-centered'
@@ -54,20 +57,22 @@ export class ProjectsComponent implements OnInit {
   }
 
   editProject(id : string) : void{
+    let _modalRef = this._modalService.open(AlterProjectComponent,
+      {
+        size: 'lg',
+        modalDialogClass: 'modal-dialog modal-dialog-centered'
+      });
 
-    /*Criar chamada do modal e prencher o dataModal com os dados retornados do HTTP GET*/
-    alert('bateu: ' +  id);
+      //_modalRef.componentInstance.id = id;
   }
 
   deleteProject(id : string) : void{
+    let _modalRef = this._modalService.open(DeleteProjectComponent,
+      {
+        size: 'lg',
+        modalDialogClass: 'modal-dialog modal-dialog-centered'
+      });
 
-    /*Criar chamada do modal e prencher o dataModal com os dados retornados do HTTP GET*/
-    alert('bateu: ' +  id);
+      //_modalRef.componentInstance.id = id;
   }
-}
-
-interface Project {
-  id: number;
-  title: string;
-  description: string;
 }

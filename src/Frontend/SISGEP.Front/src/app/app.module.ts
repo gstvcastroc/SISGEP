@@ -13,6 +13,8 @@ import { ModalComponent } from './pages/modal/modal.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { SafePipe } from './pipes/safe.pipe';
 import { CreateProjectComponent } from './pages/projects/create/create-project/create-project.component';
+import { AlterProjectComponent } from './pages/projects/alter/alter-project/alter-project.component';
+import { DeleteProjectComponent } from './pages/projects/delete/delete-project/delete-project.component';
 
 @NgModule({
   declarations: [
@@ -23,7 +25,9 @@ import { CreateProjectComponent } from './pages/projects/create/create-project/c
     QuestionaryComponent,
     ModalComponent,
     SafePipe,
-    CreateProjectComponent
+    CreateProjectComponent,
+    AlterProjectComponent,
+    DeleteProjectComponent
   ],
   imports: [
     BrowserModule,
