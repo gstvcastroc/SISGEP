@@ -15,6 +15,9 @@ import { SafePipe } from './pipes/safe.pipe';
 import { CreateProjectComponent } from './pages/projects/create/create-project/create-project.component';
 import { AlterProjectComponent } from './pages/projects/alter/alter-project/alter-project.component';
 import { DeleteProjectComponent } from './pages/projects/delete/delete-project/delete-project.component';
+import { CreateQuestionaryComponent } from './pages/questionary/create/create-questionary/create-questionary.component';
+import { AlterQuestionaryComponent } from './pages/questionary/alter/alter-questionary/alter-questionary.component';
+import { DeleteQuestionaryComponent } from './pages/questionary/delete/delete-questionary/delete-questionary.component';
 
 @NgModule({
   declarations: [
@@ -27,7 +30,10 @@ import { DeleteProjectComponent } from './pages/projects/delete/delete-project/d
     SafePipe,
     CreateProjectComponent,
     AlterProjectComponent,
-    DeleteProjectComponent
+    DeleteProjectComponent,
+    CreateQuestionaryComponent,
+    AlterQuestionaryComponent,
+    DeleteQuestionaryComponent
   ],
   imports: [
     BrowserModule,
