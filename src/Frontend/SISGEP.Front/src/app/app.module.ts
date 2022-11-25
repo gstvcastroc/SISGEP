@@ -18,6 +18,8 @@ import { DeleteProjectComponent } from './pages/projects/delete/delete-project/d
 import { CreateQuestionaryComponent } from './pages/questionary/create/create-questionary/create-questionary.component';
 import { AlterQuestionaryComponent } from './pages/questionary/alter/alter-questionary/alter-questionary.component';
 import { DeleteQuestionaryComponent } from './pages/questionary/delete/delete-questionary/delete-questionary.component';
+import { LoginComponent } from './pages/login/login.component';
+import { RegisterComponent } from './pages/register/register.component';
 
 @NgModule({
   declarations: [
@@ -33,7 +35,9 @@ import { DeleteQuestionaryComponent } from './pages/questionary/delete/delete-qu
     DeleteProjectComponent,
     CreateQuestionaryComponent,
     AlterQuestionaryComponent,
-    DeleteQuestionaryComponent
+    DeleteQuestionaryComponent,
+    LoginComponent,
+    RegisterComponent
   ],
   imports: [
     BrowserModule,
