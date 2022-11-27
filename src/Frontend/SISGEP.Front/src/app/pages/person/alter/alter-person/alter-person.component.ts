@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input  } from '@angular/core';
 import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
@@ -7,6 +7,8 @@ import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
   styleUrls: ['./alter-person.component.css']
 })
 export class AlterPersonComponent implements OnInit {
+
+  @Input() personId!: string;
 
   constructor(public activeModal: NgbActiveModal) { }
 

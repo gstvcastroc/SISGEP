@@ -1,6 +1,14 @@
-export interface Project {
+import { Guid } from "guid-typescript";
+import { Person } from "./person-interface";
+import { Survey } from "./questionary-interface";
 
-  id: number;
-  title: string;
-  description: string;
+export interface Project {
+  ProjectId: Guid;
+  Name: string;
+  Description: string;
+  IsActive: boolean;
+  StartDate: Date;
+  EndDate: Date;
+  Survey: Survey[];
+  Persons: Person[];
 }

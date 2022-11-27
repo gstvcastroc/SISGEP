@@ -6,7 +6,7 @@
       <div class="text-center py-3 my-3">
         <a class="btn btn-primary" (click)="newPerson()">Nova Pessoa&nbsp;<i class="fa-solid fa-plus fa-beat hoverEfect" style="--fa-animation-duration: 2s;"></i></a>&nbsp;
       </div>
-      <table class="table table-striped">
+      <table *ngIf="loadPerson()" class="table table-striped">
         <thead>
           <tr>
             <th scope="col"></th>
@@ -17,12 +17,12 @@
           </tr>
         </thead>
         <tbody>
-          <tr *ngFor="let p of loadPerson()">
-            <th scope="row">{{p.id}}</th>
-            <td>{{p.name}}</td>
-            <td>{{p.docIdentify}}</td>
-            <td><a style="cursor: pointer;" (click)="editPerson(p.id)"><i class="fa-regular fa-pen-to-square" data-toggle="tooltip" data-placement="right" title="Alterar"></i></a></td>
-            <td><a style="cursor: pointer;" (click)="deletePerson(p.id)"><i class="fa-solid fa-delete-left" data-toggle="tooltip" data-placement="right" title="Excluir"></i></a></td>
+          <tr *ngFor="let p of loadPerson() | async">
+            <th scope="row">{{p.PersonId}}</th>
+            <td>{{p.Name}}</td>
+            <td>{{p.Cpf}}</td>
+            <td><a style="cursor: pointer;" (click)="editPerson(p.PersonId)"><i class="fa-regular fa-pen-to-square" data-toggle="tooltip" data-placement="right" title="Alterar"></i></a></td>
+            <td><a style="cursor: pointer;" (click)="deletePerson(p.PersonId)"><i class="fa-solid fa-delete-left" data-toggle="tooltip" data-placement="right" title="Excluir"></i></a></td>
           </tr>
         </tbody>
       </table>
