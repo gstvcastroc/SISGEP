@@ -1,10 +1,14 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { NgbModal, ModalDismissReasons } from '@ng-bootstrap/ng-bootstrap';
+import { Observable, throwError } from 'rxjs';
+import { catchError, map, retry } from 'rxjs/operators';
+
 import { Person } from 'src/app/interface/person-interface';
 import { CreatePersonComponent } from './create/create-person/create-person.component';
 import { AlterPersonComponent } from './alter/alter-person/alter-person.component';
 import { DeletePersonComponent } from './delete/delete-person/delete-person.component';
+import { Guid } from 'guid-typescript';
 
 @Component({
   selector: 'app-person',
@@ -18,11 +22,11 @@ export class PersonComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  loadPerson() : Person[] {
+  _httpRequestUrl = 'https://localhost:5001/api/';
 
-    /*this._httpClient.get<Person[]>('https://localhost:5001/api/Project').subscribe(result => { projectsList = result }); Chamada HTTP para preencher a entidade*/
+  loadPerson() : Observable<Person[]> {
 
-    let personList: Person[] = [
+    /*let personList: Person[] = [
       { id: 1, name: 'Renato Mateus da Mota', docIdentify: '962.107.576-93' },
       { id: 2, name: 'Aparecida Bruna Maria Nascimento', docIdentify: '781.210.576-80' },
       { id: 3, name: 'Helena Elaine Castro', docIdentify: '398.649.646-74' },
@@ -30,9 +34,9 @@ export class PersonComponent implements OnInit {
       { id: 5, name: 'Eloá Benedita Melo', docIdentify: '802.743.926-40' },
       { id: 6, name: 'Marcelo Thales Lucca de Paula', docIdentify: '494.035.466-03' },
       { id: 7, name: 'Marcelo Thiago Paulo Galvão', docIdentify: '183.547.516-78' }
-    ];
+    ];*/
 
-    return personList;
+    return this._httpClient.get<Person[]>(this._httpRequestUrl + 'Person');
   }
 
   newPerson() : void{
@@ -43,23 +47,23 @@ export class PersonComponent implements OnInit {
       });
   }
 
-  editPerson(id : number) : void{
+  editPerson(PersonId : Guid) : void{
     let _modalRef = this._modalService.open(AlterPersonComponent,
       {
         size: 'lg',
         modalDialogClass: 'modal-dialog modal-dialog-centered'
       });
 
-      //_modalRef.componentInstance.id = id;
+      _modalRef.componentInstance.PersonId = PersonId;
   }
 
-  deletePerson(id : number) : void{
+  deletePerson(PersonId : Guid) : void{
     let _modalRef = this._modalService.open(DeletePersonComponent,
       {
         size: 'lg',
         modalDialogClass: 'modal-dialog modal-dialog-centered'
       });
 
-      //_modalRef.componentInstance.id = id;
+      _modalRef.componentInstance.PersonId = PersonId;
   }
 }

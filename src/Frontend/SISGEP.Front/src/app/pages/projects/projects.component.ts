@@ -6,6 +6,8 @@ import { CreateProjectComponent } from './create/create-project/create-project.c
 import { Project } from 'src/app/interface/project-interface';
 import { AlterProjectComponent } from './alter/alter-project/alter-project.component';
 import { DeleteProjectComponent } from './delete/delete-project/delete-project.component';
+import { Guid } from 'guid-typescript';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-projects',
@@ -19,11 +21,13 @@ export class ProjectsComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  loadProjects() : Project[] {
+  _httpRequestUrl = 'https://localhost:5001/api/';
+
+  loadProjects() : Observable<Project[]> {
 
     /*this._httpClient.get<Project[]>('https://localhost:5001/api/Project').subscribe(result => { projectsList = result }); Chamada HTTP para preencher a entidade*/
 
-    let projectsList: Project[] = [
+    /*let projectsList: Project[] = [
       { id: 1, title: 'Alpha', description: 'Mussum Ipsum, cacilds vidis litro abertis.' },
       { id: 2, title: 'Beta', description: 'Mussum Ipsum, cacilds vidis litro abertis.' },
       { id: 3, title: 'Gama', description: 'Mussum Ipsum, cacilds vidis litro abertis.' },
@@ -31,9 +35,9 @@ export class ProjectsComponent implements OnInit {
       { id: 5, title: 'Orion', description: 'Mussum Ipsum, cacilds vidis litro abertis.' },
       { id: 6, title: 'Marte', description: 'Mussum Ipsum, cacilds vidis litro abertis.' },
       { id: 7, title: 'Saturno', description: 'Mussum Ipsum, cacilds vidis litro abertis.' }
-    ];
+    ];*/
 
-    return projectsList;
+    return this._httpClient.get<Project[]>(this._httpRequestUrl + 'Project');
   }
 
   showDashboard(): void{
@@ -56,23 +60,19 @@ export class ProjectsComponent implements OnInit {
       });
   }
 
-  editProject(id : string) : void{
+  editProject(ProjectId : Guid) : void{
     let _modalRef = this._modalService.open(AlterProjectComponent,
       {
         size: 'lg',
         modalDialogClass: 'modal-dialog modal-dialog-centered'
       });
-
-      //_modalRef.componentInstance.id = id;
   }
 
-  deleteProject(id : string) : void{
+  deleteProject(ProjectId : Guid) : void{
     let _modalRef = this._modalService.open(DeleteProjectComponent,
       {
         size: 'lg',
         modalDialogClass: 'modal-dialog modal-dialog-centered'
       });
-
-      //_modalRef.componentInstance.id = id;
   }
 }
