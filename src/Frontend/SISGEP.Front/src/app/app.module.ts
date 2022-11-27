@@ -20,6 +20,10 @@ import { AlterQuestionaryComponent } from './pages/questionary/alter/alter-quest
 import { DeleteQuestionaryComponent } from './pages/questionary/delete/delete-questionary/delete-questionary.component';
 import { LoginComponent } from './pages/login/login.component';
 import { RegisterComponent } from './pages/register/register.component';
+import { PersonComponent } from './pages/person/person.component';
+import { CreatePersonComponent } from './pages/person/create/create-person/create-person.component';
+import { AlterPersonComponent } from './pages/person/alter/alter-person/alter-person.component';
+import { DeletePersonComponent } from './pages/person/delete/delete-person/delete-person.component';
 
 @NgModule({
   declarations: [
@@ -37,7 +41,11 @@ import { RegisterComponent } from './pages/register/register.component';
     AlterQuestionaryComponent,
     DeleteQuestionaryComponent,
     LoginComponent,
-    RegisterComponent
+    RegisterComponent,
+    PersonComponent,
+    CreatePersonComponent,
+    AlterPersonComponent,
+    DeletePersonComponent
   ],
   imports: [
     BrowserModule,
