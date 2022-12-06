@@ -9,7 +9,6 @@
       <table *ngIf="personList" class="table table-striped">
         <thead>
           <tr>
-            <th scope="col"></th>
             <th scope="col">Pessoa</th>
             <th scope="col">Documento Identificação</th>
             <th scope="col"></th>
@@ -18,11 +17,10 @@
         </thead>
         <tbody>
           <tr *ngFor="let p of personList">
-            <th scope="row">{{p.PersonId}}</th>
-            <td>{{p.Name}}</td>
-            <td>{{p.Cpf}}</td>
-            <td><a style="cursor: pointer;" (click)="editPerson(p.PersonId)"><i class="fa-regular fa-pen-to-square" data-toggle="tooltip" data-placement="right" title="Alterar"></i></a></td>
-            <td><a style="cursor: pointer;" (click)="deletePerson(p.PersonId)"><i class="fa-solid fa-delete-left" data-toggle="tooltip" data-placement="right" title="Excluir"></i></a></td>
+            <td>{{p.name}}</td>
+            <td>{{p.cpf}}</td>
+            <td><a style="cursor: pointer;" (click)="editPerson(p.personId)"><i class="fa-regular fa-pen-to-square" data-toggle="tooltip" data-placement="right" title="Alterar"></i></a></td>
+            <td><a style="cursor: pointer;" (click)="deletePerson(p.personId)"><i class="fa-solid fa-delete-left" data-toggle="tooltip" data-placement="right" title="Excluir"></i></a></td>
           </tr>
         </tbody>
       </table>

@@ -3,26 +3,28 @@ import { Project } from "./project-interface";
 import { FilledSurvey } from "./questionary-interface";
 
 export interface Person {
-  PersonId: Guid;
-  Name: string;
-  Password: string;
-  IsActive: boolean;
-  Cpf: string;
-  PersonType: PersonType;
+  personId: Guid;
+  name: string;
+  email: string;
+  password: string;
+  isActive: boolean;
+  cpf: string;
+  personType: PersonType;
 
-  Address: {
-    AddressId: Guid;
-    PostalCode: string;
-    Thoroughfare: string;
-    Number: number;
-    Complement: string;
-    City: string;
-    State: string;
-    PersonId: Guid;
+  address: {
+    addressId: Guid;
+    postalCode: string;
+    thoroughfare: string;
+    number: number;
+    neighborhood: string;
+    complement: string;
+    city: string;
+    state: string;
+    personId: Guid;
   };
 
-  Projects : Project[];
-  FilledSurvey : FilledSurvey[];
+  projects : Project[];
+  filledSurvey : FilledSurvey[];
 }
 
 enum PersonType
