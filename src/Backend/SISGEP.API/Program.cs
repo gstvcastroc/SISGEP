@@ -6,6 +6,7 @@ using SISGEP.Application.Data;
 using SISGEP.Application.Data.Repositories;
 using SISGEP.Application.Entities;
 using SISGEP.Application.Services;
+using System;
 
 namespace SISGEP.API
 {
@@ -15,9 +16,17 @@ namespace SISGEP.API
         {
             var builder = WebApplication.CreateBuilder(args);
 
-            builder.Services.AddControllers();
+            builder.Services.AddCors(options =>
+            {
+                options.AddPolicy(
+                "Any",
+                cors =>
+                {
+                    cors.AllowAnyOrigin().AllowAnyHeader().AllowAnyMethod();
+                });
+            });
 
-            builder.Services.AddCors();
+            builder.Services.AddControllers();
 
             builder.Services.AddEndpointsApiExplorer();
 
@@ -49,6 +58,8 @@ namespace SISGEP.API
             }
 
             app.UseHttpsRedirection();
+
+            app.UseCors("Any");
 
             app.UseAuthorization();
 
