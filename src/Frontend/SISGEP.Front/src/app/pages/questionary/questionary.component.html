@@ -1,10 +1,20 @@
 <section class="py-3 my-4">
   <div class="container">
     <div class="container text-center">
-      <h4 class="py-3"><b>Questionários <span class="bg-success-light p-2 text-white">cadastrados!</span></b></h4>
-      <hr class="mb-4 pb-4"/>
+      <h4 class="py-3">
+        <b
+          >Questionários
+          <span class="bg-success-light p-2 text-white">cadastrados!</span></b
+        >
+      </h4>
+      <hr class="mb-4 pb-4" />
       <div class="text-center py-3 my-3">
-        <a class="btn btn-primary" (click)="newQuestionary()">Novo Questionário&nbsp;<i class="fa-solid fa-plus fa-beat hoverEfect" style="--fa-animation-duration: 2s;"></i></a>
+        <a class="btn btn-primary" (click)="newQuestionary()"
+          >Novo Questionário&nbsp;<i
+            class="fa-solid fa-plus fa-beat hoverEfect"
+            style="--fa-animation-duration: 2s"
+          ></i
+        ></a>
       </div>
       <table *ngIf="surveyList" class="table table-striped">
         <thead>
@@ -13,22 +23,39 @@
             <th scope="col">Questionário</th>
             <th scope="col">Projeto</th>
             <th scope="col">Data de Criação</th>
-            <th scope="col"></th>
+            <th scope="col">Ação</th>
             <th scope="col"></th>
           </tr>
         </thead>
         <tbody>
           <tr *ngFor="let q of surveyList">
-            <th scope="row">{{q.surveyId}}</th>
-            <td>{{q.name}}</td>
-            <td>{{q.projectId}}</td>
-            <td>{{q.date}}</td>
-            <td><a style="cursor: pointer;" (click)="editQuestionary(q.surveyId)"><i class="fa-regular fa-pen-to-square" data-toggle="tooltip" data-placement="right" title="Alterar"></i></a></td>
-            <td><a style="cursor: pointer;" (click)="deleteQuestionary(q.surveyId)"><i class="fa-solid fa-delete-left" data-toggle="tooltip" data-placement="right" title="Excluir"></i></a></td>
+            <th scope="row">{{ q.surveyId }}</th>
+            <td>{{ q.name }}</td>
+            <td>{{ q.projectId }}</td>
+            <td>{{ q.date }}</td>
+            <td>
+              <a style="cursor: pointer" (click)="editQuestionary(q.surveyId)"
+                ><i
+                  class="fa-regular fa-pen-to-square"
+                  data-toggle="tooltip"
+                  data-placement="right"
+                  title="Alterar"
+                ></i
+              ></a>
+            </td>
+            <td>
+              <a style="cursor: pointer" (click)="deleteQuestionary(q.surveyId)"
+                ><i
+                  class="fa-solid fa-delete-left"
+                  data-toggle="tooltip"
+                  data-placement="right"
+                  title="Excluir"
+                ></i
+              ></a>
+            </td>
           </tr>
         </tbody>
       </table>
-  </div>
+    </div>
   </div>
 </section>
-

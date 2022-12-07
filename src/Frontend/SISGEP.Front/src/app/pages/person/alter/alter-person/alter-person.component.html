@@ -1,9 +1,117 @@
 <div class="modal-header">
-  <h5 class="modal-title">Alterar Pessoa - nome</h5>
-  <a role="button" class="btn close" data-dismiss="modal" (click)="closeModal('dismiss')">
-    <span class="close" data-bs-dismiss="modal" aria-label="Close">&times;</span>
+  <h5 class="modal-title">Nova Pessoa</h5>
+  <a
+    role="button"
+    class="btn close"
+    data-dismiss="modal"
+    (click)="closeModal('dismiss')"
+  >
+    <span class="close" data-bs-dismiss="modal" aria-label="Close"
+      >&times;</span
+    >
   </a>
 </div>
 <div class="modal-body">
+  <form id="form">
+    <div class="mb-3">
+      <label for="lblNome" class="form-label">Nome</label>:
+      <input
+        type="text"
+        class="form-control"
+        id="inputNome"
+        placeholder="Nome"
+      />
+    </div>
+    <div class="mb-3">
+      <label for="exampleInputEmail1" class="form-label">E-mail</label>
+      <input
+        type="email"
+        class="form-control"
+        id="exampleInputEmail1"
+        aria-describedby="emailHelp"
+        placeholder="Digite aqui seu e-mail"
+        required
+      />
+    </div>
+    <div class="mb-3">
+      <label for="exampleInputPassword1" class="form-label">Senha</label>
+      <input
+        type="password"
+        class="form-control"
+        id="exampleInputPassword1"
+        placeholder="Digite aqui sua senha"
+        required
+      />
+    </div>
+    <div class="mb-3">
+      <div class="form-check">
+        <input
+          mdbCheckbox
+          class="form-check-input"
+          type="checkbox"
+          value=""
+          id="flexCheckChecked"
+          [checked]="true"
+        />
+        <label class="form-check-label" for="flexCheckChecked"
+          ><b>Ativo?</b></label
+        >
+      </div>
+    </div>
+    <div class="mb-3">
+      <label for="exampleInputEmail1" class="form-label">Insira seu CPF</label>
+      <input
+        type="number"
+        class="form-control"
+        id="exampleInputEmail1"
+        aria-describedby="emailHelp"
+        placeholder="Digite aqui seu CPF"
+        required
+      />
+    </div>
+    <div class="mb-3">
+      <label class="form-label">Tipo Pessoa</label>
+      <select class="form-select" aria-label="Default select example">
+        <option value="-1" selected>Selecione...</option>
+        <option value="0">Gestor</option>
+        <option value="1">Voluntário</option>
+        <option value="2">Beneficiário</option>
+      </select>
+    </div>
+    <div class="row g-3">
+      <div class="col-12">
+        <label for="inputAddress" class="form-label">Endereço</label>
+        <input
+          type="text"
+          class="form-control"
+          id="inputAddress"
+          placeholder="Endereço"
+        />
+      </div>
+      <div class="col-md-6">
+        <label for="inputCity" class="form-label">Complemento</label>
+        <input
+          type="text"
+          class="form-control"
+          id="inputCity"
+          placeholder="Complemento"
+        />
+      </div>
+      <div class="col-md-4">
+        <label for="inputState" class="form-label">CEP</label>
+        <input
+          type="text"
+          class="form-control"
+          id="inputCity"
+          placeholder="CEP"
+        />
+      </div>
+      <div class="col-md-2">
+        <label for="lblUF" class="form-label">Estado</label>
+        <input type="text" class="form-control" id="inputUF" placeholder="Estado" />
+      </div>
+    </div>
+    <button class="btn btn-outline-success mt-3 mb-3" type="button">Salvar</button>
+  </form>
 </div>
 <div class="modal-footer"></div>
