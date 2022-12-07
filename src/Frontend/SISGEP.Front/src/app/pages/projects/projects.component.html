@@ -7,7 +7,7 @@
         <a class="btn btn-primary" (click)="newProject()">Novo Projeto&nbsp;<i class="fa-solid fa-plus fa-beat hoverEfect" style="--fa-animation-duration: 2s;"></i></a>&nbsp;
         <a class="btn btn-success" (click)="showDashboard()">Exibir Dashboard&nbsp;<i class="fa-solid fa-chart-simple fa-beat hoverEfect" style="--fa-animation-duration: 2s;"></i></a>
       </div>
-      <table *ngIf="loadProjects()" class="table table-striped">
+      <table *ngIf="projectList" class="table table-striped">
         <thead>
           <tr>
             <th scope="col">Projeto</th>
@@ -19,13 +19,13 @@
           </tr>
         </thead>
         <tbody>
-          <tr *ngFor="let p of loadProjects() | async">
-            <td>{{p.Name}}</td>
-            <td>{{p.Description}}</td>
-            <td>{{p.StartDate}}</td>
-            <td>{{p.EndDate}}</td>
-            <td><a style="cursor: pointer;" (click)="editProject(p.ProjectId)"><i class="fa-regular fa-pen-to-square" data-toggle="tooltip" data-placement="right" title="Alterar"></i></a></td>
-            <td><a style="cursor: pointer;" (click)="deleteProject(p.ProjectId)"><i class="fa-solid fa-delete-left" data-toggle="tooltip" data-placement="right" title="Excluir"></i></a></td>
+          <tr *ngFor="let p of projectList">
+            <td>{{p.name}}</td>
+            <td>{{p.description}}</td>
+            <td>{{p.startDate}}</td>
+            <td>{{p.endDate}}</td>
+            <td><a style="cursor: pointer;" (click)="editProject(p.projectId)"><i class="fa-regular fa-pen-to-square" data-toggle="tooltip" data-placement="right" title="Alterar"></i></a></td>
+            <td><a style="cursor: pointer;" (click)="deleteProject(p.projectId)"><i class="fa-solid fa-delete-left" data-toggle="tooltip" data-placement="right" title="Excluir"></i></a></td>
           </tr>
         </tbody>
       </table>

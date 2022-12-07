@@ -1,17 +1,17 @@
 import { Guid } from "guid-typescript";
 
 export interface Survey {
-  SurveyId : Guid;
-  Name : string;
-  Date : Date;
-  Structure : string;
-  ProjectId : Guid;
+  surveyId : Guid;
+  name : string;
+  date : Date;
+  structure : string;
+  projectId : Guid;
 }
 
 export interface FilledSurvey {
-  FilledSurveyId : Guid;
-  Structure : string;
-  Date : Date;
-  SurveyId : Guid;
-  PersonID : Guid;
+  filledSurveyId : Guid;
+  structure : string;
+  date : Date;
+  surveyId : Guid;
+  personId : Guid;
 }

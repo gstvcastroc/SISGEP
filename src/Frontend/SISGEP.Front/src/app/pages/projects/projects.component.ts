@@ -7,7 +7,7 @@ import { Project } from 'src/app/interface/project-interface';
 import { AlterProjectComponent } from './alter/alter-project/alter-project.component';
 import { DeleteProjectComponent } from './delete/delete-project/delete-project.component';
 import { Guid } from 'guid-typescript';
-import { Observable } from 'rxjs';
+import { map } from 'rxjs';
 
 @Component({
   selector: 'app-projects',
@@ -18,26 +18,22 @@ export class ProjectsComponent implements OnInit {
 
   constructor(private _httpClient: HttpClient, private _modalService: NgbModal) { }
 
+  projectList : Project[] = [];
+
   ngOnInit(): void {
+
+    this.projectList = this.loadProjects();
   }
 
   _httpRequestUrl = 'https://localhost:5001/api/';
 
-  loadProjects() : Observable<Project[]> {
+  loadProjects() : Project[] {
 
-    /*this._httpClient.get<Project[]>('https://localhost:5001/api/Project').subscribe(result => { projectsList = result }); Chamada HTTP para preencher a entidade*/
+    let project : Project[] = [];
 
-    /*let projectsList: Project[] = [
-      { id: 1, title: 'Alpha', description: 'Mussum Ipsum, cacilds vidis litro abertis.' },
-      { id: 2, title: 'Beta', description: 'Mussum Ipsum, cacilds vidis litro abertis.' },
-      { id: 3, title: 'Gama', description: 'Mussum Ipsum, cacilds vidis litro abertis.' },
-      { id: 4, title: 'Andromeda', description: 'Mussum Ipsum, cacilds vidis litro abertis.' },
-      { id: 5, title: 'Orion', description: 'Mussum Ipsum, cacilds vidis litro abertis.' },
-      { id: 6, title: 'Marte', description: 'Mussum Ipsum, cacilds vidis litro abertis.' },
-      { id: 7, title: 'Saturno', description: 'Mussum Ipsum, cacilds vidis litro abertis.' }
-    ];*/
+    this._httpClient.get<Project[]>(`${this._httpRequestUrl}Project`).pipe(map(response => <Project[]>response)).subscribe((data : Project[]) => { project.push(...data) });
 
-    return this._httpClient.get<Project[]>(this._httpRequestUrl + 'Project');
+    return project;
   }
 
   showDashboard(): void{
