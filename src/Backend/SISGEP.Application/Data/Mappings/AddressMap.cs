@@ -8,13 +8,13 @@ namespace SISGEP.Application.Data.Mappings
     {
         public void Configure(EntityTypeBuilder<Address> builder)
         {
-            builder.ToTable("addresses");
+            builder.ToTable("address");
 
             builder
-                .HasKey(address => address.Id);
+                .HasKey(address => address.AddressId);
 
             builder
-                .Property(address => address.Id);
+                .Property(address => address.AddressId);
 
             builder
                 .Property(address => address.PostalCode)
@@ -38,8 +38,7 @@ namespace SISGEP.Application.Data.Mappings
 
             builder
                 .Property(address => address.Complement)
-                .HasColumnType("varchar(128)")
-                .IsRequired();
+                .HasColumnType("varchar(128)");
 
             builder
                 .Property(address => address.City)

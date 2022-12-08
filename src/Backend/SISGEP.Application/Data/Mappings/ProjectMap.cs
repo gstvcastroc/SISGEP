@@ -1,11 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore.Metadata.Builders;
 using Microsoft.EntityFrameworkCore;
 using SISGEP.Application.Entities;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace SISGEP.Application.Data.Mappings
 {
@@ -13,13 +8,13 @@ namespace SISGEP.Application.Data.Mappings
     {
         public void Configure(EntityTypeBuilder<Project> builder)
         {
-            builder.ToTable("projects");
+            builder.ToTable("project");
 
             builder
-                .HasKey(project => project.Id);
+                .HasKey(project => project.ProjectId);
 
             builder
-                .Property(project => project.Id);
+                .Property(project => project.ProjectId);
 
             builder
                 .Property(project => project.Name)
@@ -28,8 +23,7 @@ namespace SISGEP.Application.Data.Mappings
 
             builder
                 .Property(project => project.Description)
-                .HasColumnType("varchar(256)")
-                .IsRequired();
+                .HasColumnType("varchar(256)");
 
             builder
                 .Property(project => project.IsActive)
@@ -43,13 +37,7 @@ namespace SISGEP.Application.Data.Mappings
 
             builder
                 .Property(project => project.EndDate)
-                .HasColumnType("date")
-                .IsRequired();
-
-            builder
-                .HasOne(project => project.Questionnaire)
-                .WithOne(questionnaire => questionnaire.Project)
-                .HasForeignKey<Questionnaire>(questionnaire => questionnaire.ProjectId);
+                .HasColumnType("date");
         }
     }
 }

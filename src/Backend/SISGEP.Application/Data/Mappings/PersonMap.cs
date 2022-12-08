@@ -1,11 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore.Metadata.Builders;
 using Microsoft.EntityFrameworkCore;
 using SISGEP.Application.Entities;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace SISGEP.Application.Data.Mappings
 {
@@ -13,13 +8,13 @@ namespace SISGEP.Application.Data.Mappings
     {
         public void Configure(EntityTypeBuilder<Person> builder)
         {
-            builder.ToTable("persons");
+            builder.ToTable("person");
 
             builder
-                .HasKey(person => person.Id);
+                .HasKey(person => person.PersonId);
 
             builder
-                .Property(person => person.Id);
+                .Property(person => person.PersonId);
 
             builder
                 .Property(person => person.Name)
@@ -51,19 +46,6 @@ namespace SISGEP.Application.Data.Mappings
                 .HasColumnType("varchar(9)")
                 .HasConversion<string>()
                 .IsRequired();
-
-            builder
-                .HasOne(person => person.Address)
-                .WithOne(address => address.Person)
-                .HasForeignKey<Address>(address => address.PersonId);
-
-            builder
-                .HasMany(person => person.Projects)
-                .WithMany(project => project.Persons);
-
-            builder
-                .HasMany(person => person.Answers)
-                .WithMany(project => project.Benefiteds);
         }
     }
 }

@@ -22,39 +22,24 @@ namespace SISGEP.Application.Migrations
 
             NpgsqlModelBuilderExtensions.UseIdentityByDefaultColumns(modelBuilder);
 
-            modelBuilder.Entity("AnsweredQuestionnairePerson", b =>
+            modelBuilder.Entity("person-project", b =>
                 {
-                    b.Property<Guid>("AnswersId")
+                    b.Property<Guid>("PersonsPersonId")
                         .HasColumnType("uuid");
 
-                    b.Property<Guid>("BenefitedsId")
+                    b.Property<Guid>("ProjectsProjectId")
                         .HasColumnType("uuid");
 
-                    b.HasKey("AnswersId", "BenefitedsId");
+                    b.HasKey("PersonsPersonId", "ProjectsProjectId");
 
-                    b.HasIndex("BenefitedsId");
+                    b.HasIndex("ProjectsProjectId");
 
-                    b.ToTable("AnsweredQuestionnairePerson");
-                });
-
-            modelBuilder.Entity("PersonProject", b =>
-                {
-                    b.Property<Guid>("PersonsId")
-                        .HasColumnType("uuid");
-
-                    b.Property<Guid>("ProjectsId")
-                        .HasColumnType("uuid");
-
-                    b.HasKey("PersonsId", "ProjectsId");
-
-                    b.HasIndex("ProjectsId");
-
-                    b.ToTable("PersonProject");
+                    b.ToTable("person-project");
                 });
 
             modelBuilder.Entity("SISGEP.Application.Entities.Address", b =>
                 {
-                    b.Property<Guid>("Id")
+                    b.Property<Guid>("AddressId")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uuid");
 
@@ -63,7 +48,6 @@ namespace SISGEP.Application.Migrations
                         .HasColumnType("varchar(64)");
 
                     b.Property<string>("Complement")
-                        .IsRequired()
                         .HasColumnType("varchar(128)");
 
                     b.Property<string>("Neighborhood")
@@ -88,40 +72,45 @@ namespace SISGEP.Application.Migrations
                         .IsRequired()
                         .HasColumnType("varchar(256)");
 
-                    b.HasKey("Id");
+                    b.HasKey("AddressId");
 
                     b.HasIndex("PersonId")
                         .IsUnique();
 
-                    b.ToTable("addresses", (string)null);
+                    b.ToTable("address", (string)null);
                 });
 
-            modelBuilder.Entity("SISGEP.Application.Entities.AnsweredQuestionnaire", b =>
+            modelBuilder.Entity("SISGEP.Application.Entities.FilledSurvey", b =>
                 {
-                    b.Property<Guid>("Id")
+                    b.Property<Guid>("FilledSurveyId")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uuid");
 
-                    b.Property<DateOnly>("Date")
+                    b.Property<DateTime>("Date")
                         .HasColumnType("date");
 
-                    b.Property<Guid>("QuestionnaireId")
+                    b.Property<Guid>("PersonId")
                         .HasColumnType("uuid");
 
                     b.Property<string>("Structure")
                         .IsRequired()
                         .HasColumnType("json");
 
-                    b.HasKey("Id");
+                    b.Property<Guid>("SurveyId")
+                        .HasColumnType("uuid");
 
-                    b.HasIndex("QuestionnaireId");
+                    b.HasKey("FilledSurveyId");
 
-                    b.ToTable("answered-questionnaires", (string)null);
+                    b.HasIndex("PersonId");
+
+                    b.HasIndex("SurveyId");
+
+                    b.ToTable("filled-survey", (string)null);
                 });
 
             modelBuilder.Entity("SISGEP.Application.Entities.Person", b =>
                 {
-                    b.Property<Guid>("Id")
+                    b.Property<Guid>("PersonId")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uuid");
 
@@ -148,22 +137,21 @@ namespace SISGEP.Application.Migrations
                         .IsRequired()
                         .HasColumnType("varchar(9)");
 
-                    b.HasKey("Id");
+                    b.HasKey("PersonId");
 
-                    b.ToTable("persons", (string)null);
+                    b.ToTable("person", (string)null);
                 });
 
             modelBuilder.Entity("SISGEP.Application.Entities.Project", b =>
                 {
-                    b.Property<Guid>("Id")
+                    b.Property<Guid>("ProjectId")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uuid");
 
                     b.Property<string>("Description")
-                        .IsRequired()
                         .HasColumnType("varchar(256)");
 
-                    b.Property<DateOnly>("EndDate")
+                    b.Property<DateTime?>("EndDate")
                         .HasColumnType("date");
 
                     b.Property<bool>("IsActive")
@@ -173,21 +161,23 @@ namespace SISGEP.Application.Migrations
                         .IsRequired()
                         .HasColumnType("varchar(32)");
 
-                    b.Property<DateOnly>("StartDate")
+                    b.Property<DateTime?>("StartDate")
+                        .IsRequired()
                         .HasColumnType("date");
 
-                    b.HasKey("Id");
+                    b.HasKey("ProjectId");
 
-                    b.ToTable("projects", (string)null);
+                    b.ToTable("project", (string)null);
                 });
 
-            modelBuilder.Entity("SISGEP.Application.Entities.Questionnaire", b =>
+            modelBuilder.Entity("SISGEP.Application.Entities.Survey", b =>
                 {
-                    b.Property<Guid>("Id")
+                    b.Property<Guid>("SurveyId")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uuid");
 
-                    b.Property<DateOnly>("Date")
+                    b.Property<DateTime?>("Date")
+                        .IsRequired()
                         .HasColumnType("date");
 
                     b.Property<string>("Name")
@@ -201,91 +191,78 @@ namespace SISGEP.Application.Migrations
                         .IsRequired()
                         .HasColumnType("json");
 
-                    b.HasKey("Id");
+                    b.HasKey("SurveyId");
 
                     b.HasIndex("ProjectId")
                         .IsUnique();
 
-                    b.ToTable("questionnaires", (string)null);
+                    b.ToTable("survey", (string)null);
                 });
 
-            modelBuilder.Entity("AnsweredQuestionnairePerson", b =>
-                {
-                    b.HasOne("SISGEP.Application.Entities.AnsweredQuestionnaire", null)
-                        .WithMany()
-                        .HasForeignKey("AnswersId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("SISGEP.Application.Entities.Person", null)
-                        .WithMany()
-                        .HasForeignKey("BenefitedsId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-                });
-
-            modelBuilder.Entity("PersonProject", b =>
+            modelBuilder.Entity("person-project", b =>
                 {
                     b.HasOne("SISGEP.Application.Entities.Person", null)
                         .WithMany()
-                        .HasForeignKey("PersonsId")
+                        .HasForeignKey("PersonsPersonId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.HasOne("SISGEP.Application.Entities.Project", null)
                         .WithMany()
-                        .HasForeignKey("ProjectsId")
+                        .HasForeignKey("ProjectsProjectId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
                 });
 
             modelBuilder.Entity("SISGEP.Application.Entities.Address", b =>
                 {
-                    b.HasOne("SISGEP.Application.Entities.Person", "Person")
+                    b.HasOne("SISGEP.Application.Entities.Person", null)
                         .WithOne("Address")
                         .HasForeignKey("SISGEP.Application.Entities.Address", "PersonId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
-
-                    b.Navigation("Person");
                 });
 
-            modelBuilder.Entity("SISGEP.Application.Entities.AnsweredQuestionnaire", b =>
+            modelBuilder.Entity("SISGEP.Application.Entities.FilledSurvey", b =>
                 {
-                    b.HasOne("SISGEP.Application.Entities.Questionnaire", "Questionnaire")
-                        .WithMany("AnsweredQuestionnaires")
-                        .HasForeignKey("QuestionnaireId")
+                    b.HasOne("SISGEP.Application.Entities.Person", null)
+                        .WithMany("FilledSurveys")
+                        .HasForeignKey("PersonId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.Navigation("Questionnaire");
-                });
-
-            modelBuilder.Entity("SISGEP.Application.Entities.Questionnaire", b =>
-                {
-                    b.HasOne("SISGEP.Application.Entities.Project", "Project")
-                        .WithOne("Questionnaire")
-                        .HasForeignKey("SISGEP.Application.Entities.Questionnaire", "ProjectId")
+                    b.HasOne("SISGEP.Application.Entities.Survey", null)
+                        .WithMany("FilledSurveys")
+                        .HasForeignKey("SurveyId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
+                });
 
-                    b.Navigation("Project");
+            modelBuilder.Entity("SISGEP.Application.Entities.Survey", b =>
+                {
+                    b.HasOne("SISGEP.Application.Entities.Project", null)
+                        .WithOne("Survey")
+                        .HasForeignKey("SISGEP.Application.Entities.Survey", "ProjectId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
                 });
 
             modelBuilder.Entity("SISGEP.Application.Entities.Person", b =>
                 {
                     b.Navigation("Address")
                         .IsRequired();
+
+                    b.Navigation("FilledSurveys");
                 });
 
             modelBuilder.Entity("SISGEP.Application.Entities.Project", b =>
                 {
-                    b.Navigation("Questionnaire");
+                    b.Navigation("Survey");
                 });
 
-            modelBuilder.Entity("SISGEP.Application.Entities.Questionnaire", b =>
+            modelBuilder.Entity("SISGEP.Application.Entities.Survey", b =>
                 {
-                    b.Navigation("AnsweredQuestionnaires");
+                    b.Navigation("FilledSurveys");
                 });
 #pragma warning restore 612, 618
         }
