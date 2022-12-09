@@ -25,6 +25,7 @@ namespace SISGEP.Application.Services
         {
             var survey = new Survey()
             {
+                SurveyId = dto.ProjectId.Value,
                 Name = dto.Name,
                 Date = dto.Date,
                 Structure = dto.Structure,

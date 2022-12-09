@@ -46,7 +46,7 @@ namespace SISGEP.Application.Services
 
         public IEnumerable<Project> GetAllProjectsAsync()
         {
-            var projects = _repository.GetAll(new string[] { });
+            var projects = _repository.GetAll(new string[] { "Survey" });
 
             return projects;
         }

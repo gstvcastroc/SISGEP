@@ -6,7 +6,7 @@ namespace SISGEP.Application.Entities
 {
     public class Survey : Entity
     {
-        public Guid SurveyId { get; set; } = Guid.NewGuid();
+        public Guid SurveyId { get; set; }
 
         public string Name { get; set; } = string.Empty;
 
