@@ -6,7 +6,6 @@ using SISGEP.Application.Data;
 using SISGEP.Application.Data.Repositories;
 using SISGEP.Application.Entities;
 using SISGEP.Application.Services;
-using System;
 
 namespace SISGEP.API
 {

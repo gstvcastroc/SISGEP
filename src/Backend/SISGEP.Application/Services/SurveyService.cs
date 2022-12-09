@@ -1,6 +1,5 @@
 ﻿using SISGEP.Application.Contracts;
 using SISGEP.Application.Data;
-using SISGEP.Application.Data.Repositories;
 using SISGEP.Application.DTOs;
 using SISGEP.Application.Entities;
 using System;

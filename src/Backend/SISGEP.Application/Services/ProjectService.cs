@@ -1,11 +1,9 @@
 ﻿using SISGEP.Application.Contracts;
 using SISGEP.Application.Data;
-using SISGEP.Application.Data.Repositories;
 using SISGEP.Application.DTOs;
 using SISGEP.Application.Entities;
 using System;
 using System.Collections.Generic;
-using System.Text.Json;
 using System.Threading.Tasks;
 
 namespace SISGEP.Application.Services

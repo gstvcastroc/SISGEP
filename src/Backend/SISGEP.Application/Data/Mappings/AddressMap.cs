@@ -23,18 +23,15 @@ namespace SISGEP.Application.Data.Mappings
 
             builder
                 .Property(address => address.Thoroughfare)
-                .HasColumnType("varchar(256)")
-                .IsRequired();
+                .HasColumnType("varchar(256)");
 
             builder
                 .Property(address => address.Number)
-                .HasColumnType("smallserial")
-                .IsRequired();
+                .HasColumnType("smallserial");
 
             builder
                 .Property(address => address.Neighborhood)
-                .HasColumnType("varchar(64)")
-                .IsRequired();
+                .HasColumnType("varchar(64)");
 
             builder
                 .Property(address => address.Complement)
@@ -47,7 +44,7 @@ namespace SISGEP.Application.Data.Mappings
 
             builder
                 .Property(address => address.State)
-                .HasColumnType("varchar(16)")
+                .HasColumnType("varchar(32)")
                 .IsRequired();
         }
     }
