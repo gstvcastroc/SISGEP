@@ -1,9 +1,9 @@
-﻿using SISGEP.Application.Contracts;
+﻿using Microsoft.EntityFrameworkCore;
+using SISGEP.Application.Contracts;
 using SISGEP.Application.Entities;
 using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
-using Microsoft.EntityFrameworkCore;
 
 namespace SISGEP.Application.Data.Repositories
 {

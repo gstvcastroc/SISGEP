@@ -22,7 +22,7 @@ namespace SISGEP.Application.Migrations
 
             NpgsqlModelBuilderExtensions.UseIdentityByDefaultColumns(modelBuilder);
 
-            modelBuilder.Entity("person-project", b =>
+            modelBuilder.Entity("PersonProject", b =>
                 {
                     b.Property<Guid>("PersonsPersonId")
                         .HasColumnType("uuid");
@@ -34,7 +34,7 @@ namespace SISGEP.Application.Migrations
 
                     b.HasIndex("ProjectsProjectId");
 
-                    b.ToTable("person-project");
+                    b.ToTable("PersonProject");
                 });
 
             modelBuilder.Entity("SISGEP.Application.Entities.Address", b =>
@@ -66,7 +66,7 @@ namespace SISGEP.Application.Migrations
 
                     b.Property<string>("State")
                         .IsRequired()
-                        .HasColumnType("varchar(16)");
+                        .HasColumnType("varchar(32)");
 
                     b.Property<string>("Thoroughfare")
                         .IsRequired()
@@ -116,7 +116,7 @@ namespace SISGEP.Application.Migrations
 
                     b.Property<string>("Cpf")
                         .IsRequired()
-                        .HasColumnType("varchar(9)");
+                        .HasColumnType("varchar(11)");
 
                     b.Property<string>("Email")
                         .IsRequired()
@@ -199,7 +199,7 @@ namespace SISGEP.Application.Migrations
                     b.ToTable("survey", (string)null);
                 });
 
-            modelBuilder.Entity("person-project", b =>
+            modelBuilder.Entity("PersonProject", b =>
                 {
                     b.HasOne("SISGEP.Application.Entities.Person", null)
                         .WithMany()

@@ -1,5 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore.Metadata.Builders;
-using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Metadata.Builders;
 using SISGEP.Application.Entities;
 
 namespace SISGEP.Application.Data.Mappings
@@ -38,7 +38,7 @@ namespace SISGEP.Application.Data.Mappings
 
             builder
                 .Property(person => person.Cpf)
-                .HasColumnType("varchar(9)")
+                .HasColumnType("varchar(11)")
                 .IsRequired();
 
             builder

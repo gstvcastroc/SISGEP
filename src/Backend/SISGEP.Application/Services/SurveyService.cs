@@ -1,6 +1,5 @@
 ﻿using SISGEP.Application.Contracts;
 using SISGEP.Application.Data;
-using SISGEP.Application.Data.Repositories;
 using SISGEP.Application.DTOs;
 using SISGEP.Application.Entities;
 using System;
@@ -26,6 +25,7 @@ namespace SISGEP.Application.Services
         {
             var survey = new Survey()
             {
+                SurveyId = dto.ProjectId.Value,
                 Name = dto.Name,
                 Date = dto.Date,
                 Structure = dto.Structure,

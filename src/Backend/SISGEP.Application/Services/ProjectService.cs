@@ -1,11 +1,9 @@
 ﻿using SISGEP.Application.Contracts;
 using SISGEP.Application.Data;
-using SISGEP.Application.Data.Repositories;
 using SISGEP.Application.DTOs;
 using SISGEP.Application.Entities;
 using System;
 using System.Collections.Generic;
-using System.Text.Json;
 using System.Threading.Tasks;
 
 namespace SISGEP.Application.Services
@@ -48,7 +46,7 @@ namespace SISGEP.Application.Services
 
         public IEnumerable<Project> GetAllProjectsAsync()
         {
-            var projects = _repository.GetAll(new string[] { });
+            var projects = _repository.GetAll(new string[] { "Survey" });
 
             return projects;
         }
