@@ -6,6 +6,7 @@ export interface Survey {
   date : Date;
   structure : string;
   projectId : Guid;
+  filledSurveys : FilledSurvey[];
 }
 
 export interface FilledSurvey {

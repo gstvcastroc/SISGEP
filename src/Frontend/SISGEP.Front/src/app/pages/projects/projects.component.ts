@@ -31,6 +31,8 @@ export class ProjectsComponent implements OnInit {
 
     let project : Project[] = [];
 
+    //this._httpClient.get<Project[]>(`${this._httpRequestUrl}Project`).pipe(map(response => <Project[]>response)).subscribe(response => this.projectList =  response);
+
     this._httpClient.get<Project[]>(`${this._httpRequestUrl}Project`).pipe(map(response => <Project[]>response)).subscribe((data : Project[]) => { project.push(...data) });
 
     return project;

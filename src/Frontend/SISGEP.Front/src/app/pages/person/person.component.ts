@@ -33,6 +33,10 @@ export class PersonComponent implements OnInit {
 
     this._httpClient.get<Person[]>(`${this._httpRequestUrl}Person`).pipe(map(response => <Person[]>response)).subscribe((data : Person[]) => { person.push(...data) });
 
+    person.splice(25, person.length);
+
+    console.log(person)
+
     return person;
   }
 
