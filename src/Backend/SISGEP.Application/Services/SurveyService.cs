@@ -46,7 +46,7 @@ namespace SISGEP.Application.Services
             return survey;
         }
 
-        public async Task<IEnumerable<Survey>> GetAllSurveysAsync()
+        public IEnumerable<Survey> GetAllSurveysAsync()
         {
             var surveys = _repository.GetAll(includes: new string[] { "FilledSurveys" });
 

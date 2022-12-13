@@ -12,7 +12,7 @@ namespace SISGEP.Application.Contracts
 
         Task<Survey> GetSurveyByIdAsync(Guid id);
 
-        Task<IEnumerable<Survey>> GetAllSurveysAsync();
+        IEnumerable<Survey> GetAllSurveysAsync();
 
         Task<bool> UpdateSurveyAsync(Guid id, EditSurveyDTO dto);
 
