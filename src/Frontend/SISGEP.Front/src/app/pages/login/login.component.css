@@ -20,11 +20,4 @@
   font-weight: bold;
   color: #666;
 }
-.button {
-  background: var(--primeGreen) !important;
-  color: white;
-  border: none;
-  height: 40px;
-  border-radius: 5px;
-  width: 100%;
-}
+
