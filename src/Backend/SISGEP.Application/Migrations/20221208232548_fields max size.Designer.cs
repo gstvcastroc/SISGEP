@@ -2,6 +2,7 @@
 using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 using SISGEP.Application.Data;
@@ -11,9 +12,10 @@ using SISGEP.Application.Data;
 namespace SISGEP.Application.Migrations
 {
     [DbContext(typeof(SISGEPContext))]
-    partial class SISGEPContextModelSnapshot : ModelSnapshot
+    [Migration("20221208232548_fields max size")]
+    partial class fieldsmaxsize
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
