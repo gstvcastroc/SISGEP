@@ -18,7 +18,7 @@ namespace SISGEP.Application.Data
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            optionsBuilder.UseNpgsql("User ID=pucdb;Password=pucdw123;Host=postgresql-79630-0.cloudclusters.net;Port=19048;Database=pucext;Include Error Detail=true;")
+            optionsBuilder.UseNpgsql("")
                 .EnableSensitiveDataLogging();
         }
 
