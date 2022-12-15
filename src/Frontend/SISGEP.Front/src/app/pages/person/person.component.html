@@ -9,18 +9,20 @@
       <table *ngIf="personList" class="table table-striped">
         <thead>
           <tr>
-            <th scope="col">Código</th>
             <th scope="col">Pessoa</th>
-            <th scope="col">Documento Identificação</th>
+            <th scope="col">E-mail</th>
+            <th scope="col">Cidade</th>
+            <th scope="col">Estado</th>
             <th scope="col"></th>
             <th scope="col"></th>
           </tr>
         </thead>
         <tbody>
           <tr *ngFor="let p of personList">
-            <td>{{p.personId}}</td>
             <td>{{p.name}}</td>
-            <td>{{p.cpf}}</td>
+            <td>{{p.email}}</td>
+            <td>{{p.address.city}}</td>
+            <td>{{p.address.state}}</td>
             <td><a style="cursor: pointer;" (click)="editPerson(p.personId)"><i class="fa-regular fa-pen-to-square" data-toggle="tooltip" data-placement="right" title="Alterar"></i></a></td>
             <td><a style="cursor: pointer;" (click)="deletePerson(p.personId)"><i class="fa-solid fa-delete-left" data-toggle="tooltip" data-placement="right" title="Excluir"></i></a></td>
           </tr>

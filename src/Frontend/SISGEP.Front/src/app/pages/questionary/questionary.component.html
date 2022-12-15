@@ -19,20 +19,16 @@
       <table *ngIf="surveyList" class="table table-striped">
         <thead>
           <tr>
-            <th scope="col"></th>
             <th scope="col">Questionário</th>
-            <th scope="col">Projeto</th>
             <th scope="col">Data de Criação</th>
-            <th scope="col">Ação</th>
+            <th scope="col"></th>
             <th scope="col"></th>
           </tr>
         </thead>
         <tbody>
           <tr *ngFor="let q of surveyList">
-            <th scope="row">{{ q.surveyId }}</th>
             <td>{{ q.name }}</td>
-            <td>{{ q.projectId }}</td>
-            <td>{{ q.date }}</td>
+            <td>{{ q.date | date : 'dd/MM/yyyy' }}</td>
             <td>
               <a style="cursor: pointer" (click)="editQuestionary(q.surveyId)"
                 ><i

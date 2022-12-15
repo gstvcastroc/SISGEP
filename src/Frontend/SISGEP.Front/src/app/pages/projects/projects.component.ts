@@ -31,8 +31,6 @@ export class ProjectsComponent implements OnInit {
 
     let project : Project[] = [];
 
-    //this._httpClient.get<Project[]>(`${this._httpRequestUrl}Project`).pipe(map(response => <Project[]>response)).subscribe(response => this.projectList =  response);
-
     this._httpClient.get<Project[]>(`${this._httpRequestUrl}Project`).pipe(map(response => <Project[]>response)).subscribe((data : Project[]) => { project.push(...data) });
 
     return project;
@@ -64,6 +62,14 @@ export class ProjectsComponent implements OnInit {
         size: 'lg',
         modalDialogClass: 'modal-dialog modal-dialog-centered'
       });
+
+      this._httpClient.get<any>(`${this._httpRequestUrl}Project/` + ProjectId).subscribe(data => {
+        _modalRef.componentInstance.name = data.name;
+        _modalRef.componentInstance.description = data.description;
+        _modalRef.componentInstance.active = data.isActive;
+        _modalRef.componentInstance.startDate = data.startDate;
+        _modalRef.componentInstance.endDate = data.endDate;
+      })
   }
 
   deleteProject(ProjectId : Guid) : void{

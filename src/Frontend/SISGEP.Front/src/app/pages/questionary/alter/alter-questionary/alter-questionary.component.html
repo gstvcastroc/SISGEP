@@ -1,10 +1,44 @@
 <div class="modal-header">
-  <h5 class="modal-title">Alterar Questionário - Nome Quest(Alterar por variavel)</h5>
-  <a role="button" class="btn close" data-dismiss="modal" (click)="closeModal('dismiss')">
-    <span class="close" data-bs-dismiss="modal" aria-label="Close">&times;</span>
+  <h5 class="modal-title">Alterar Questionário</h5>
+  <a
+    role="button"
+    class="btn close"
+    data-dismiss="modal"
+    (click)="closeModal('dismiss')"
+  >
+    <span class="close" data-bs-dismiss="modal" aria-label="Close"
+      >&times;</span
+    >
   </a>
 </div>
 <div class="modal-body">
-
+  <form id="form">
+    <div class="mb-3">
+      <label for="exampleInputEmail1" class="form-label">Nome do Questionário</label>
+      <input
+        type="text"
+        class="form-control"
+        id="exampleInputEmail1"
+        aria-describedby="emailHelp" [value]="name"
+        placeholder="Digite aqui o nome do questionário"
+        required
+      />
+    </div>
+    <div class="mb-3">
+      <label for="exampleInputPassword1" class="form-label"
+        >Data de criação</label
+      >
+      <input
+        type="date"
+        class="form-control"
+        id="exampleInputPassword1" [value]="date | date:'yyyy-MM-dd'"
+        placeholder="Digite a data de criação"
+        required
+      />
+    </div>
+    <button type="submit" class="btn btn-outline-success mt-3 mb-3">
+      Adicionar pergunta
+    </button>
+  </form>
 </div>
 <div class="modal-footer"></div>

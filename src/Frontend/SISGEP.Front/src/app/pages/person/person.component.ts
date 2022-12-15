@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpParams } from '@angular/common/http';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { map } from 'rxjs/operators';
 
@@ -33,10 +33,6 @@ export class PersonComponent implements OnInit {
 
     this._httpClient.get<Person[]>(`${this._httpRequestUrl}Person`).pipe(map(response => <Person[]>response)).subscribe((data : Person[]) => { person.push(...data) });
 
-    person.splice(25, person.length);
-
-    console.log(person)
-
     return person;
   }
 
@@ -55,7 +51,14 @@ export class PersonComponent implements OnInit {
         modalDialogClass: 'modal-dialog modal-dialog-centered'
       });
 
-      _modalRef.componentInstance.PersonId = PersonId;
+      this._httpClient.get<any>(`${this._httpRequestUrl}Person/` + PersonId).subscribe(data => {
+        _modalRef.componentInstance.name = data.name;
+        _modalRef.componentInstance.email = data.email;
+        _modalRef.componentInstance.password = data.password;
+        _modalRef.componentInstance.active = data.isActive;
+        _modalRef.componentInstance.cpf = data.cpf;
+        _modalRef.componentInstance.personType = data.personType;
+      })
   }
 
   deletePerson(PersonId : Guid) : void{
@@ -64,7 +67,5 @@ export class PersonComponent implements OnInit {
         size: 'lg',
         modalDialogClass: 'modal-dialog modal-dialog-centered'
       });
-
-      _modalRef.componentInstance.PersonId = PersonId;
   }
 }

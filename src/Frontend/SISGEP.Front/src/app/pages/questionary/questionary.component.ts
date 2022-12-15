@@ -49,7 +49,10 @@ export class QuestionaryComponent implements OnInit {
           modalDialogClass: 'modal-dialog modal-dialog-centered'
         });
 
-        //_modalRef.componentInstance.id = id;
+      this._httpClient.get<any>(`${this._httpRequestUrl}Survey/` + id).subscribe(data => {
+        _modalRef.componentInstance.name = data.name;
+        _modalRef.componentInstance.date = data.date;
+      })
     }
 
     deleteQuestionary(id : Guid) : void{
