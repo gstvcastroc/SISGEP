@@ -1,0 +1,23 @@
+#form {
+  display: flex;
+  flex-direction: column;
+  margin: 5% 37% 5% 37%;
+}
+@media screen and (max-width: 768px) {
+  #form {
+    margin: 5%;
+  }
+}
+#login-title {
+  font-weight: 300;
+}
+@media screen and (max-width: 808px) {
+  #login-title {
+    font-size: 30px;
+  }
+}
+.form-label {
+  font-weight: bold;
+  color: #666;
+}
+

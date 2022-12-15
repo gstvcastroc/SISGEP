@@ -1,0 +1,33 @@
+<section class="py-3 my-4">
+  <div class="container">
+    <div class="container text-center">
+      <h4 class="py-3"><b>Pessoas <span class="bg-success-light p-2 text-white">cadastradas!</span></b></h4>
+      <hr class="mb-4 pb-4"/>
+      <div class="text-center py-3 my-3">
+        <a class="btn btn-primary" (click)="newPerson()">Nova Pessoa&nbsp;<i class="fa-solid fa-plus fa-beat hoverEfect" style="--fa-animation-duration: 2s;"></i></a>&nbsp;
+      </div>
+      <table *ngIf="personList" class="table table-striped">
+        <thead>
+          <tr>
+            <th scope="col">Pessoa</th>
+            <th scope="col">E-mail</th>
+            <th scope="col">Cidade</th>
+            <th scope="col">Estado</th>
+            <th scope="col"></th>
+            <th scope="col"></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let p of personList">
+            <td>{{p.name}}</td>
+            <td>{{p.email}}</td>
+            <td>{{p.address.city}}</td>
+            <td>{{p.address.state}}</td>
+            <td><a style="cursor: pointer;" (click)="editPerson(p.personId)"><i class="fa-regular fa-pen-to-square" data-toggle="tooltip" data-placement="right" title="Alterar"></i></a></td>
+            <td><a style="cursor: pointer;" (click)="deletePerson(p.personId)"><i class="fa-solid fa-delete-left" data-toggle="tooltip" data-placement="right" title="Excluir"></i></a></td>
+          </tr>
+        </tbody>
+      </table>
+  </div>
+  </div>
+</section>

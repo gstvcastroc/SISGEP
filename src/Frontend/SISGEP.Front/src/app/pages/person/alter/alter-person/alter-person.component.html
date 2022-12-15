@@ -1,0 +1,84 @@
+<div class="modal-header">
+  <h5 class="modal-title">Nova Pessoa</h5>
+  <a
+    role="button"
+    class="btn close"
+    data-dismiss="modal"
+    (click)="closeModal('dismiss')"
+  >
+    <span class="close" data-bs-dismiss="modal" aria-label="Close"
+      >&times;</span
+    >
+  </a>
+</div>
+<div class="modal-body">
+  <form id="form">
+    <div class="mb-3">
+      <label for="lblNome" class="form-label">Nome</label>:
+      <input
+        type="text"
+        class="form-control"
+        id="inputNome"
+        placeholder="Nome" [value]="name"
+      />
+    </div>
+    <div class="mb-3">
+      <label for="exampleInputEmail1" class="form-label">E-mail</label>
+      <input
+        type="email"
+        class="form-control"
+        id="exampleInputEmail1"
+        aria-describedby="emailHelp"
+        placeholder="Digite aqui seu e-mail" [value]="email"
+        required
+      />
+    </div>
+    <div class="mb-3">
+      <label for="exampleInputPassword1" class="form-label">Senha</label>
+      <input
+        type="password"
+        class="form-control"
+        id="exampleInputPassword1"
+        placeholder="Digite aqui sua senha" [value]="password"
+        required
+      />
+    </div>
+    <div class="mb-3">
+      <div class="form-check">
+        <input
+          mdbCheckbox
+          class="form-check-input"
+          type="checkbox"
+          value=""
+          id="flexCheckChecked"
+          [checked]="active"
+        />
+        <label class="form-check-label" for="flexCheckChecked"
+          ><b>Ativo?</b></label
+        >
+      </div>
+    </div>
+    <div class="mb-3">
+      <label for="exampleInputEmail1" class="form-label">Insira seu CPF</label>
+      <input
+        type="number"
+        class="form-control"
+        id="exampleInputEmail1"
+        aria-describedby="emailHelp"
+        placeholder="Digite aqui seu CPF" [value]="cpf"
+        required
+      />
+    </div>
+    <div class="mb-3">
+      <label class="form-label">Tipo Pessoa</label>
+      <select class="form-select" aria-label="Default select example" [value]="personType">
+        <option value="-1">Selecione...</option>
+        <option value="0">Gestor</option>
+        <option value="1">Voluntário</option>
+        <option value="2">Beneficiário</option>
+      </select>
+    </div>
+    <button class="btn btn-outline-success mt-3 mb-3" type="button">Salvar</button>
+  </form>
+</div>
+<div class="modal-footer"></div>

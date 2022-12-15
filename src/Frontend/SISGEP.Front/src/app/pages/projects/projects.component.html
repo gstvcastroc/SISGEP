@@ -1,17 +1,34 @@
-<section class="bg-light py-3">
+<section class="py-3 my-4">
+  <div class="container">
     <div class="container text-center">
       <h4 class="py-3"><b>Projetos <span class="bg-success-light p-2 text-white">Em Andamento</span></b></h4>
-      <hr class="mb-4"/>
-      <div class="row">
-        <div *ngFor="let p of projects" class="col-md-3 my-3">
-          <div class="card" style="width: 18rem;">
-            <a (click)="dashboard(p.id)" style="cursor: pointer;"><img class="card-img-top" src="{{p.source}}"></a>
-            <div class="card-body">
-              <h5 class="card-title">{{p.title}}</h5>
-              <p class="card-text">{{p.description}}</p>
-            </div>
-          </div>
-        </div>
+      <hr class="mb-4 pb-4"/>
+      <div class="text-center py-3 my-3">
+        <a class="btn btn-primary" (click)="newProject()">Novo Projeto&nbsp;<i class="fa-solid fa-plus fa-beat hoverEfect" style="--fa-animation-duration: 2s;"></i></a>&nbsp;
+        <a class="btn btn-success" (click)="showDashboard()">Exibir Dashboard&nbsp;<i class="fa-solid fa-chart-simple fa-beat hoverEfect" style="--fa-animation-duration: 2s;"></i></a>
       </div>
+      <table *ngIf="projectList" class="table table-striped">
+        <thead>
+          <tr>
+            <th scope="col">Projeto</th>
+            <th scope="col">Descrição</th>
+            <th scope="col">Data Início</th>
+            <th scope="col">Data Final</th>
+            <th scope="col"></th>
+            <th scope="col"></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let p of projectList">
+            <td>{{p.name}}</td>
+            <td>{{p.description}}</td>
+            <td>{{p.startDate | date : 'dd/MM/yyyy'}}</td>
+            <td>{{p.endDate || '-'}}</td>
+            <td><a style="cursor: pointer;" (click)="editProject(p.projectId)"><i class="fa-regular fa-pen-to-square" data-toggle="tooltip" data-placement="right" title="Alterar"></i></a></td>
+            <td><a style="cursor: pointer;" (click)="deleteProject(p.projectId)"><i class="fa-solid fa-delete-left" data-toggle="tooltip" data-placement="right" title="Excluir"></i></a></td>
+          </tr>
+        </tbody>
+      </table>
+  </div>
   </div>
 </section>
