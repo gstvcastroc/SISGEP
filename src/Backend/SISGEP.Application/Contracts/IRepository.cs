@@ -1,6 +1,7 @@
 ﻿using SISGEP.Application.Entities;
 using System;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 
 namespace SISGEP.Application.Contracts
 {
@@ -8,12 +9,12 @@ namespace SISGEP.Application.Contracts
     {
         bool Create(T entity);
 
-        T GetById(Guid id);
+        Task<T>? GetById(Guid id);
 
-        IEnumerable<T> GetAll();
+        IEnumerable<T>? GetAll(string[]? includes = null);
 
-        bool Update(Guid id, T entity);
+        bool Update(T entity);
 
-        bool Delete(Guid id);
+        Task<bool> Delete(Guid id);
     }
 }

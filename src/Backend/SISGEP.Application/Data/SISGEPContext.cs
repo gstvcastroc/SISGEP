@@ -6,23 +6,20 @@ namespace SISGEP.Application.Data
 {
     public class SISGEPContext : DbContext
     {
-#pragma warning disable CS8618
-
         public DbSet<Person> Persons { get; set; }
 
         public DbSet<Address> Addresses { get; set; }
 
         public DbSet<Project> Projects { get; set; }
 
-        public DbSet<Questionnaire> Questionnaires { get; set; }
+        public DbSet<Survey> Surveys { get; set; }
 
-        public DbSet<AnsweredQuestionnaire> AnsweredQuestionnaires { get; set; }
-
-#pragma warning restore CS8618
+        public DbSet<FilledSurvey> FilledSurveys { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            optionsBuilder.UseNpgsql("User ID=postgres;Password=root;Host=localhost;Port=5432;Database=SISGEP;");
+            optionsBuilder.UseNpgsql("User ID=pucdb;Password=pucdw123;Host=postgresql-79630-0.cloudclusters.net;Port=19048;Database=pucext;Include Error Detail=true;")
+                .EnableSensitiveDataLogging();
         }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
@@ -30,8 +27,8 @@ namespace SISGEP.Application.Data
             modelBuilder.ApplyConfiguration(new PersonMap());
             modelBuilder.ApplyConfiguration(new AddressMap());
             modelBuilder.ApplyConfiguration(new ProjectMap());
-            modelBuilder.ApplyConfiguration(new QuestionnaireMap());
-            modelBuilder.ApplyConfiguration(new AnsweredQuestionnaireMap());
+            modelBuilder.ApplyConfiguration(new SurveyMap());
+            modelBuilder.ApplyConfiguration(new FilledSurveyMap());
         }
     }
 }

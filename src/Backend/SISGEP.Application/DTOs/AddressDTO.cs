@@ -1,11 +1,7 @@
-﻿using System;
-
-namespace SISGEP.Application.Entities
+﻿namespace SISGEP.Application.DTOs
 {
-    public class Address : Entity
+    public class AddressDTO
     {
-        public Guid AddressId { get; set; } = Guid.NewGuid();
-
         public string PostalCode { get; set; } = string.Empty;
 
         public string Thoroughfare { get; set; } = string.Empty;
@@ -19,7 +15,5 @@ namespace SISGEP.Application.Entities
         public string City { get; set; } = string.Empty;
 
         public string State { get; set; } = string.Empty;
-
-        public Guid PersonId { get; set; }
     }
 }
