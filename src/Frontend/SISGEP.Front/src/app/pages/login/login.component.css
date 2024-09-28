@@ -1,11 +1,11 @@
 #form {
   display: flex;
   flex-direction: column;
-  margin: 5% 37% 5% 37%;
+  margin: 100px 37%;
 }
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 1070px) {
   #form {
-    margin: 5%;
+    margin: 100px 5%;
   }
 }
 #login-title {
@@ -20,4 +20,3 @@
   font-weight: bold;
   color: #666;
 }
-

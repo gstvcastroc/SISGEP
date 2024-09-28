@@ -21,6 +21,9 @@
     font-size: 20px;
   }
 }
+.container h4 {
+  margin-bottom: 40px;
+}
 #carouselExampleCaptions {
   width: 100%;
 }
@@ -40,7 +43,7 @@
 #accordion-container {
   display: flex;
   justify-content: center;
-  margin: 3% auto 3% auto;
+  margin: 10% auto 20%;
 }
 .accordion {
   width: 100%;
@@ -51,4 +54,17 @@
 }
 .accordion-body {
   text-align: justify;
+}
+.carousel-control-prev,
+.carousel-control-next {
+  @media screen and (max-width: 1003px) {
+    display: none;
+  }
+}
+.bg-white {
+  max-width: 1000px;
+  margin: 100px auto;
+}
+.py-3 {
+  margin-top: 50px !important;
 }

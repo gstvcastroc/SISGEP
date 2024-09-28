@@ -1,0 +1,14 @@
+.py-3 {
+  margin-top: 50px !important;
+}
+#container-buttons {
+  @media (max-width: 366px) {
+    display: flex;
+    flex-direction: column;
+  }
+}
+#projects-table {
+  @media (max-width: 366px) {
+    font-size: 12px;
+  }
+}

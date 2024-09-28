@@ -7,6 +7,7 @@
 }
 #title {
   font-weight: 300;
+  margin-top: 100px;
 }
 @media screen and (max-width: 808px) {
   #title {
@@ -76,4 +77,3 @@
   font-weight: bold;
   color: #666;
 }
-
