@@ -11,57 +11,62 @@ import { Guid } from 'guid-typescript';
 @Component({
   selector: 'app-questionary',
   templateUrl: './questionary.component.html',
-  styleUrls: ['./questionary.component.css']
+  styleUrls: ['./questionary.component.css'],
 })
 export class QuestionaryComponent implements OnInit {
+  constructor(
+    private _httpClient: HttpClient,
+    private _modalService: NgbModal
+  ) {}
 
-  constructor(private _httpClient: HttpClient, private _modalService: NgbModal) { }
-
-  surveyList : Survey[] = [];
+  surveyList: Survey[] = [];
 
   ngOnInit(): void {
-
     this.surveyList = this.loadQuestionary();
   }
 
-  _httpRequestUrl = 'https://localhost:5001/api/';
+  _httpRequestUrl = 'http://sisgep.runasp.net';
 
-    loadQuestionary() : Survey[] {
-      let survey : Survey[] = [];
+  loadQuestionary(): Survey[] {
+    let survey: Survey[] = [];
 
-      this._httpClient.get<Survey[]>(`${this._httpRequestUrl}Survey`).pipe(map(response => <Survey[]>response)).subscribe((data : Survey[]) => { survey.push(...data) });
+    this._httpClient
+      .get<Survey[]>(`${this._httpRequestUrl}Survey`)
+      .pipe(map((response) => <Survey[]>response))
+      .subscribe((data: Survey[]) => {
+        survey.push(...data);
+      });
 
-      return survey;
-    }
+    return survey;
+  }
 
-    newQuestionary() : void{
-      this._modalService.open(CreateQuestionaryComponent,
-        {
-          size: 'lg',
-          modalDialogClass: 'modal-dialog modal-dialog-centered'
-        });
-    }
+  newQuestionary(): void {
+    this._modalService.open(CreateQuestionaryComponent, {
+      size: 'lg',
+      modalDialogClass: 'modal-dialog modal-dialog-centered',
+    });
+  }
 
-    editQuestionary(id : Guid) : void{
-      let _modalRef = this._modalService.open(AlterQuestionaryComponent,
-        {
-          size: 'lg',
-          modalDialogClass: 'modal-dialog modal-dialog-centered'
-        });
+  editQuestionary(id: Guid): void {
+    let _modalRef = this._modalService.open(AlterQuestionaryComponent, {
+      size: 'lg',
+      modalDialogClass: 'modal-dialog modal-dialog-centered',
+    });
 
-      this._httpClient.get<any>(`${this._httpRequestUrl}Survey/` + id).subscribe(data => {
+    this._httpClient
+      .get<any>(`${this._httpRequestUrl}Survey/` + id)
+      .subscribe((data) => {
         _modalRef.componentInstance.name = data.name;
         _modalRef.componentInstance.date = data.date;
-      })
-    }
+      });
+  }
 
-    deleteQuestionary(id : Guid) : void{
-      let _modalRef = this._modalService.open(DeleteQuestionaryComponent,
-        {
-          size: 'lg',
-          modalDialogClass: 'modal-dialog modal-dialog-centered'
-        });
+  deleteQuestionary(id: Guid): void {
+    let _modalRef = this._modalService.open(DeleteQuestionaryComponent, {
+      size: 'lg',
+      modalDialogClass: 'modal-dialog modal-dialog-centered',
+    });
 
-        //_modalRef.componentInstance.id = id;
-    }
+    //_modalRef.componentInstance.id = id;
+  }
 }

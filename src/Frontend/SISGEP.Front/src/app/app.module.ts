@@ -18,8 +18,6 @@ import { DeleteProjectComponent } from './pages/projects/delete/delete-project/d
 import { CreateQuestionaryComponent } from './pages/questionary/create/create-questionary/create-questionary.component';
 import { AlterQuestionaryComponent } from './pages/questionary/alter/alter-questionary/alter-questionary.component';
 import { DeleteQuestionaryComponent } from './pages/questionary/delete/delete-questionary/delete-questionary.component';
-import { LoginComponent } from './pages/login/login.component';
-import { RegisterComponent } from './pages/register/register.component';
 import { PersonComponent } from './pages/person/person.component';
 import { CreatePersonComponent } from './pages/person/create/create-person/create-person.component';
 import { AlterPersonComponent } from './pages/person/alter/alter-person/alter-person.component';
@@ -40,20 +38,13 @@ import { DeletePersonComponent } from './pages/person/delete/delete-person/delet
     CreateQuestionaryComponent,
     AlterQuestionaryComponent,
     DeleteQuestionaryComponent,
-    LoginComponent,
-    RegisterComponent,
     PersonComponent,
     CreatePersonComponent,
     AlterPersonComponent,
-    DeletePersonComponent
+    DeletePersonComponent,
   ],
-  imports: [
-    BrowserModule,
-    AppRoutingModule,
-    HttpClientModule,
-    NgbModule
-  ],
+  imports: [BrowserModule, AppRoutingModule, HttpClientModule, NgbModule],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}

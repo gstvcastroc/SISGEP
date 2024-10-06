@@ -12,71 +12,63 @@ import { map } from 'rxjs';
 @Component({
   selector: 'app-projects',
   templateUrl: './projects.component.html',
-  styleUrls: ['./projects.component.css']
+  styleUrls: ['./projects.component.css'],
 })
 export class ProjectsComponent implements OnInit {
+  constructor(
+    private _httpClient: HttpClient,
+    private _modalService: NgbModal
+  ) {}
 
-  constructor(private _httpClient: HttpClient, private _modalService: NgbModal) { }
-
-  projectList : Project[] = [];
+  projectList: Project[] = [];
 
   ngOnInit(): void {
-
     this.projectList = this.loadProjects();
   }
 
-  _httpRequestUrl = 'https://localhost:5001/api/';
+  _httpRequestUrl = 'http://sisgep.runasp.net';
 
-  loadProjects() : Project[] {
+  loadProjects(): Project[] {
+    let project: Project[] = [];
 
-    let project : Project[] = [];
-
-    this._httpClient.get<Project[]>(`${this._httpRequestUrl}Project`).pipe(map(response => <Project[]>response)).subscribe((data : Project[]) => { project.push(...data) });
+    this._httpClient
+      .get<Project[]>(`${this._httpRequestUrl}Project`)
+      .pipe(map((response) => <Project[]>response))
+      .subscribe((data: Project[]) => {
+        project.push(...data);
+      });
 
     return project;
   }
 
-  showDashboard(): void{
-    let _modalRef = this._modalService.open(ModalComponent,
-      {
-        size: 'lg',
-        modalDialogClass: 'modal-dialog modal-dialog-centered'
-      });
-
-      let urlEmbed: string ='https://datastudio.google.com/embed/reporting/ebd93138-721e-406d-bf69-6d995a6dd63a/page/52A7C';
-
-      _modalRef.componentInstance.url = urlEmbed;
+  newProject(): void {
+    this._modalService.open(CreateProjectComponent, {
+      size: 'lg',
+      modalDialogClass: 'modal-dialog modal-dialog-centered',
+    });
   }
 
-  newProject() : void{
-    this._modalService.open(CreateProjectComponent,
-      {
-        size: 'lg',
-        modalDialogClass: 'modal-dialog modal-dialog-centered'
-      });
-  }
+  editProject(ProjectId: Guid): void {
+    let _modalRef = this._modalService.open(AlterProjectComponent, {
+      size: 'lg',
+      modalDialogClass: 'modal-dialog modal-dialog-centered',
+    });
 
-  editProject(ProjectId : Guid) : void{
-    let _modalRef = this._modalService.open(AlterProjectComponent,
-      {
-        size: 'lg',
-        modalDialogClass: 'modal-dialog modal-dialog-centered'
-      });
-
-      this._httpClient.get<any>(`${this._httpRequestUrl}Project/` + ProjectId).subscribe(data => {
+    this._httpClient
+      .get<any>(`${this._httpRequestUrl}Project/` + ProjectId)
+      .subscribe((data) => {
         _modalRef.componentInstance.name = data.name;
         _modalRef.componentInstance.description = data.description;
         _modalRef.componentInstance.active = data.isActive;
         _modalRef.componentInstance.startDate = data.startDate;
         _modalRef.componentInstance.endDate = data.endDate;
-      })
+      });
   }
 
-  deleteProject(ProjectId : Guid) : void{
-    let _modalRef = this._modalService.open(DeleteProjectComponent,
-      {
-        size: 'lg',
-        modalDialogClass: 'modal-dialog modal-dialog-centered'
-      });
+  deleteProject(ProjectId: Guid): void {
+    let _modalRef = this._modalService.open(DeleteProjectComponent, {
+      size: 'lg',
+      modalDialogClass: 'modal-dialog modal-dialog-centered',
+    });
   }
 }
