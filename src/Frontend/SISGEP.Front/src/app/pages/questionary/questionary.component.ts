@@ -25,7 +25,7 @@ export class QuestionaryComponent implements OnInit {
     this.surveyList = this.loadQuestionary();
   }
 
-  _httpRequestUrl = 'http://sisgep.runasp.net';
+  _httpRequestUrl = 'http://sisgep.runasp.net/api/';
 
   loadQuestionary(): Survey[] {
     let survey: Survey[] = [];

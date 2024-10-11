@@ -26,7 +26,7 @@ export class ProjectsComponent implements OnInit {
     this.projectList = this.loadProjects();
   }
 
-  _httpRequestUrl = 'http://sisgep.runasp.net';
+  _httpRequestUrl = 'http://sisgep.runasp.net/api/';
 
   loadProjects(): Project[] {
     let project: Project[] = [];
