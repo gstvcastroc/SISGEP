@@ -1,8 +1,11 @@
 <div class="modal-header">
   <h3>Deseja realmente prosseguir com a exclusão?</h3>
+  <a role="button" class="btn close" data-dismiss="modal" (click)="closeModal('dismiss')">
+    <span class="close" data-bs-dismiss="modal" aria-label="Close">&times;</span>
+  </a>
 </div>
 <div class="modal-body">
-  <button class="btn btn-outline-danger">Excluir!</button>
+  <button (click)="deletePerson()" class="btn btn-danger">Excluir!</button>
 </div>
 <div class="modal-footer">
 </div>

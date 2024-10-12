@@ -71,5 +71,7 @@ export class PersonComponent implements OnInit {
       size: 'lg',
       modalDialogClass: 'modal-dialog modal-dialog-centered',
     });
+    
+    _modalRef.componentInstance.personId = PersonId;
   }
 }
