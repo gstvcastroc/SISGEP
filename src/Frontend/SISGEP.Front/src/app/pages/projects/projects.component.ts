@@ -26,13 +26,11 @@ export class ProjectsComponent implements OnInit {
     this.projectList = this.loadProjects();
   }
 
-  _httpRequestUrl = 'http://sisgep.runasp.net/api/';
-
   loadProjects(): Project[] {
     let project: Project[] = [];
 
     this._httpClient
-      .get<Project[]>(`${this._httpRequestUrl}Project`)
+      .get<Project[]>('api/Project')
       .pipe(map((response) => <Project[]>response))
       .subscribe((data: Project[]) => {
         project.push(...data);
@@ -55,7 +53,7 @@ export class ProjectsComponent implements OnInit {
     });
 
     this._httpClient
-      .get<any>(`${this._httpRequestUrl}Project/` + ProjectId)
+      .get<any>(`api/Project/` + ProjectId)
       .subscribe((data) => {
         _modalRef.componentInstance.name = data.name;
         _modalRef.componentInstance.description = data.description;

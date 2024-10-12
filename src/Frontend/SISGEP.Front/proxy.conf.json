@@ -1,0 +1,8 @@
+{
+    "/api": {
+      "target": "http://sisgep.runasp.net",
+      "secure": false,
+      "changeOrigin": true,
+      "logLevel": "debug"
+    }
+  }

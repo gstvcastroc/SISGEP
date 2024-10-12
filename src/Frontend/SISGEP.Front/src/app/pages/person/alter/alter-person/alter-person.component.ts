@@ -16,8 +16,6 @@ export class AlterPersonComponent implements OnInit {
 
   personForm!: FormGroup;
 
-  _httpRequestUrl = 'http://sisgep.runasp.net/api/';
-
   constructor(public activeModal: NgbActiveModal,
     private fb: FormBuilder,
     private http: HttpClient,
@@ -50,7 +48,7 @@ export class AlterPersonComponent implements OnInit {
   }
   
   loadPersonData(personId: string) {
-    const url = `${this._httpRequestUrl}Person/${personId}`;
+    const url = `api/Person/${personId}`;
     this.http.get(url).subscribe((data: any) => {
       this.personForm.patchValue(data);
     }, error => {
@@ -61,7 +59,7 @@ export class AlterPersonComponent implements OnInit {
   updatePerson() {
     if (this.personForm.valid) {
       const formData = this.personForm.value;
-      const url = `${this._httpRequestUrl}Person/${this.personId}`;
+      const url = `api/Person/${this.personId}`;
 
       const headers = new HttpHeaders({
         'Content-Type': 'application/json',

@@ -14,8 +14,6 @@ import { PersonType } from 'src/app/interface/person-interface';
 export class CreatePersonComponent implements OnInit {  
   personForm!: FormGroup;
   
-  _httpRequestUrl = 'http://sisgep.runasp.net/api/';
-
   constructor(public activeModal: NgbActiveModal, 
     private fb: FormBuilder, 
     private http: HttpClient,
@@ -53,7 +51,7 @@ export class CreatePersonComponent implements OnInit {
 
       this.closeModal('dismiss');
 
-      this.http.post(`${this._httpRequestUrl}Person`, formData)
+      this.http.post(`api/Person`, formData)
       .subscribe({
         next: (response) => {
           console.log('Success!', response);

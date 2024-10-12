@@ -26,13 +26,11 @@ export class PersonComponent implements OnInit {
     this.personList = this.loadPerson();
   }
 
-  _httpRequestUrl = 'http://sisgep.runasp.net/api/';
-
   loadPerson(): Person[] {
     let person: Person[] = [];
 
     this._httpClient
-      .get<Person[]>(`${this._httpRequestUrl}Person`)
+      .get<Person[]>('api/Person')
       .pipe(map((response) => <Person[]>response))
       .subscribe((data: Person[]) => {
         person.push(...data);

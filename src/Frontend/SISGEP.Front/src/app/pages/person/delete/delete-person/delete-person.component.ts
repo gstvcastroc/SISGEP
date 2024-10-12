@@ -12,8 +12,6 @@ export class DeletePersonComponent implements OnInit {
 
   @Input() personId!: string;
 
-  _httpRequestUrl = 'http://sisgep.runasp.net/api/';
-
   constructor(public activeModal: NgbActiveModal,
     private http: HttpClient,
     private router: Router
@@ -27,7 +25,7 @@ export class DeletePersonComponent implements OnInit {
   }
 
   deletePerson() {
-    const url = `${this._httpRequestUrl}Person/${this.personId}`;
+    const url = `api/Person/${this.personId}`;
     const headers = new HttpHeaders({
       'Content-Type': 'application/json',
       'id': this.personId

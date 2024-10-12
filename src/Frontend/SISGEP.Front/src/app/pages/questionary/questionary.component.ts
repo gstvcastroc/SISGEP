@@ -25,13 +25,11 @@ export class QuestionaryComponent implements OnInit {
     this.surveyList = this.loadQuestionary();
   }
 
-  _httpRequestUrl = 'http://sisgep.runasp.net/api/';
-
   loadQuestionary(): Survey[] {
     let survey: Survey[] = [];
 
     this._httpClient
-      .get<Survey[]>(`${this._httpRequestUrl}Survey`)
+      .get<Survey[]>(`api/Survey`)
       .pipe(map((response) => <Survey[]>response))
       .subscribe((data: Survey[]) => {
         survey.push(...data);
@@ -54,7 +52,7 @@ export class QuestionaryComponent implements OnInit {
     });
 
     this._httpClient
-      .get<any>(`${this._httpRequestUrl}Survey/` + id)
+      .get<any>(`api/Survey/` + id)
       .subscribe((data) => {
         _modalRef.componentInstance.name = data.name;
         _modalRef.componentInstance.date = data.date;
@@ -66,7 +64,5 @@ export class QuestionaryComponent implements OnInit {
       size: 'lg',
       modalDialogClass: 'modal-dialog modal-dialog-centered',
     });
-
-    //_modalRef.componentInstance.id = id;
   }
 }
