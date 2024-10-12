@@ -26,8 +26,7 @@ export class PersonComponent implements OnInit {
     this.personList = this.loadPerson();
   }
 
-  //_httpRequestUrl = 'http://sisgep.runasp.net/api/';
-  _httpRequestUrl = 'localhost';
+  _httpRequestUrl = 'http://sisgep.runasp.net/api/';
 
   loadPerson(): Person[] {
     let person: Person[] = [];
