@@ -30,7 +30,7 @@ export class PersonComponent implements OnInit {
     let person: Person[] = [];
 
     this._httpClient
-      .get<Person[]>('api/Person')
+      .get<Person[]>('/api/Person')
       .pipe(map((response) => <Person[]>response))
       .subscribe((data: Person[]) => {
         person.push(...data);

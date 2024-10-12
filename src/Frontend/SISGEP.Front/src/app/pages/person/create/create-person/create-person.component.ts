@@ -51,7 +51,7 @@ export class CreatePersonComponent implements OnInit {
 
       this.closeModal('dismiss');
 
-      this.http.post(`api/Person`, formData)
+      this.http.post(`/api/Person`, formData)
       .subscribe({
         next: (response) => {
           console.log('Success!', response);

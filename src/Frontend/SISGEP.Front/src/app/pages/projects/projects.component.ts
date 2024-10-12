@@ -30,7 +30,7 @@ export class ProjectsComponent implements OnInit {
     let project: Project[] = [];
 
     this._httpClient
-      .get<Project[]>('api/Project')
+      .get<Project[]>('/api/Project')
       .pipe(map((response) => <Project[]>response))
       .subscribe((data: Project[]) => {
         project.push(...data);
@@ -53,7 +53,7 @@ export class ProjectsComponent implements OnInit {
     });
 
     this._httpClient
-      .get<any>(`api/Project/` + ProjectId)
+      .get<any>(`/api/Project/` + ProjectId)
       .subscribe((data) => {
         _modalRef.componentInstance.name = data.name;
         _modalRef.componentInstance.description = data.description;

@@ -48,7 +48,7 @@ export class AlterPersonComponent implements OnInit {
   }
   
   loadPersonData(personId: string) {
-    const url = `api/Person/${personId}`;
+    const url = `/api/Person/${personId}`;
     this.http.get(url).subscribe((data: any) => {
       this.personForm.patchValue(data);
     }, error => {
@@ -59,7 +59,7 @@ export class AlterPersonComponent implements OnInit {
   updatePerson() {
     if (this.personForm.valid) {
       const formData = this.personForm.value;
-      const url = `api/Person/${this.personId}`;
+      const url = `/api/Person/${this.personId}`;
 
       const headers = new HttpHeaders({
         'Content-Type': 'application/json',

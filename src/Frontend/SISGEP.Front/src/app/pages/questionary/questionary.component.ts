@@ -29,7 +29,7 @@ export class QuestionaryComponent implements OnInit {
     let survey: Survey[] = [];
 
     this._httpClient
-      .get<Survey[]>(`api/Survey`)
+      .get<Survey[]>(`/api/Survey`)
       .pipe(map((response) => <Survey[]>response))
       .subscribe((data: Survey[]) => {
         survey.push(...data);
@@ -52,7 +52,7 @@ export class QuestionaryComponent implements OnInit {
     });
 
     this._httpClient
-      .get<any>(`api/Survey/` + id)
+      .get<any>(`/api/Survey/` + id)
       .subscribe((data) => {
         _modalRef.componentInstance.name = data.name;
         _modalRef.componentInstance.date = data.date;

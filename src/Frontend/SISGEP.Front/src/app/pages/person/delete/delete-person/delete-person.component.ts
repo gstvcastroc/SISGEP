@@ -25,7 +25,7 @@ export class DeletePersonComponent implements OnInit {
   }
 
   deletePerson() {
-    const url = `api/Person/${this.personId}`;
+    const url = `/api/Person/${this.personId}`;
     const headers = new HttpHeaders({
       'Content-Type': 'application/json',
       'id': this.personId
