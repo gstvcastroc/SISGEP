@@ -27,7 +27,7 @@ export interface Person {
   filledSurvey : FilledSurvey[];
 }
 
-enum PersonType
+export enum PersonType
 {
     Manager,
     Voluntary,
