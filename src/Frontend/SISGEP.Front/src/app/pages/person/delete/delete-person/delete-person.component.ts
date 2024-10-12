@@ -1,6 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Router } from '@angular/router';
 
 @Component({
@@ -28,10 +28,14 @@ export class DeletePersonComponent implements OnInit {
 
   deletePerson() {
     const url = `${this._httpRequestUrl}Person/${this.personId}`;
+    const headers = new HttpHeaders({
+      'Content-Type': 'application/json',
+      'id': this.personId
+    });
 
     this.closeModal('dismiss');
 
-    this.http.delete(url)
+    this.http.delete(url, { headers })
       .subscribe({
         next: (response) => {
           //console.log('Delete successful!', response);

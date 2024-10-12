@@ -1,5 +1,5 @@
 <div class="modal-header">
-  <h5 class="modal-title">Nova Pessoa</h5>
+  <h5 class="modal-title">Atualizar Dados de Pessoa</h5>
   <a
     role="button"
     class="btn close"
@@ -12,34 +12,37 @@
   </a>
 </div>
 <div class="modal-body">
-  <form id="form">
+  <form [formGroup]="personForm" (ngSubmit)="updatePerson()">
     <div class="mb-3">
-      <label for="lblNome" class="form-label">Nome</label>:
+      <label for="name" class="form-label">Nome</label>:
       <input
         type="text"
         class="form-control"
-        id="inputNome"
-        placeholder="Nome" [value]="name"
+        id="name"
+        placeholder="Nome" 
+        formControlName="name" 
       />
     </div>
     <div class="mb-3">
-      <label for="exampleInputEmail1" class="form-label">E-mail</label>
+      <label for="email" class="form-label">E-mail</label>
       <input
         type="email"
         class="form-control"
-        id="exampleInputEmail1"
+        id="email"
         aria-describedby="emailHelp"
-        placeholder="Digite aqui seu e-mail" [value]="email"
+        placeholder="Digite aqui seu e-mail"
+        formControlName="email"
         required
       />
     </div>
     <div class="mb-3">
-      <label for="exampleInputPassword1" class="form-label">Senha</label>
+      <label for="password" class="form-label">Senha</label>
       <input
         type="password"
         class="form-control"
-        id="exampleInputPassword1"
-        placeholder="Digite aqui sua senha" [value]="password"
+        id="password"
+        formControlName="password"
+        placeholder="Digite aqui sua senha"
         required
       />
     </div>
@@ -50,35 +53,92 @@
           class="form-check-input"
           type="checkbox"
           value=""
-          id="flexCheckChecked"
-          [checked]="active"
+          id="flexCheckChecked" 
+          formControlName="isActive"
+          [checked]="true"
         />
-        <label class="form-check-label" for="flexCheckChecked"
+        <label class="form-check-label" for="isActive"
           ><b>Ativo?</b></label
         >
       </div>
     </div>
     <div class="mb-3">
-      <label for="exampleInputEmail1" class="form-label">Insira seu CPF</label>
+      <label for="cpf" class="form-label">Insira seu CPF</label>
       <input
-        type="number"
         class="form-control"
-        id="exampleInputEmail1"
+        id="cpf"
+        formControlName="cpf"
         aria-describedby="emailHelp"
-        placeholder="Digite aqui seu CPF" [value]="cpf"
+        placeholder="Digite aqui seu CPF"
         required
       />
-    </div>
+    </div>    
     <div class="mb-3">
-      <label class="form-label">Tipo Pessoa</label>
-      <select class="form-select" aria-label="Default select example" [value]="personType">
-        <option value="-1">Selecione...</option>
-        <option value="0">Gestor</option>
-        <option value="1">Voluntário</option>
-        <option value="2">Beneficiário</option>
+      <label for="personType" class="form-label">Tipo Pessoa</label>
+      <select id="personType" class="form-select" aria-label="Default select example" formControlName="personType">
+        <option [value]="0">Gestor</option>
+        <option [value]="1">Voluntário</option>
+        <option [value]="2">Beneficiário</option>
       </select>
     </div>
-    <button class="btn btn-outline-success mt-3 mb-3" type="button">Salvar</button>
+    <div class="row g-3" formGroupName="address">
+      <div class="col-12">
+        <label for="thoroughfare" class="form-label">Endereço</label>
+        <input
+          type="text"
+          class="form-control"
+          id="thoroughfare"
+          placeholder="Endereço"
+          formControlName="thoroughfare"
+        />
+      </div>
+      <div class="col-md-4">
+        <label for="neighborhood" class="form-label">Bairro</label>
+        <input
+          type="text"
+          class="form-control"
+          id="neighborhood"
+          placeholder="Bairro"
+          formControlName="neighborhood"
+        />
+      </div>
+      <div class="col-md-4">
+        <label for="complement" class="form-label">Complemento</label>
+        <input
+          type="text"
+          class="form-control"
+          id="complement"
+          placeholder="Complemento"
+          formControlName="complement"
+        />
+      </div>
+      <div class="col-md-4">
+        <label for="number" class="form-label">Número</label>
+        <input type="text" class="form-control" id="number" placeholder="Número" 
+          type="number" formControlName="number"/>
+      </div>
+      <div class="col-md-4">
+        <label for="postalCode" class="form-label">CEP</label>
+        <input
+          type="text"
+          class="form-control"
+          id="postalCode"
+          placeholder="CEP"
+          formControlName="postalCode"
+        />
+      </div>
+      <div class="col-md-4">
+        <label for="city" class="form-label">Cidade</label>
+        <input type="text" class="form-control" id="city" placeholder="Cidade"
+          formControlName="city"/>
+      </div>
+      <div class="col-md-4">
+        <label for="state" class="form-label">Estado</label>
+        <input type="text" class="form-control" id="state" placeholder="Estado"
+          formControlName="state"/>
+      </div>
+    </div>
+    <button class="btn btn-success mt-3 mb-3" type="submit">Alterar</button>
   </form>
 </div>
 <div class="modal-footer"></div>

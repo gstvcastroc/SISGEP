@@ -54,16 +54,7 @@ export class PersonComponent implements OnInit {
       modalDialogClass: 'modal-dialog modal-dialog-centered',
     });
 
-    this._httpClient
-      .get<any>(`${this._httpRequestUrl}Person/` + PersonId)
-      .subscribe((data) => {
-        _modalRef.componentInstance.name = data.name;
-        _modalRef.componentInstance.email = data.email;
-        _modalRef.componentInstance.password = data.password;
-        _modalRef.componentInstance.active = data.isActive;
-        _modalRef.componentInstance.cpf = data.cpf;
-        _modalRef.componentInstance.personType = data.personType;
-      });
+    _modalRef.componentInstance.personId = PersonId;    
   }
 
   deletePerson(PersonId: Guid): void {
