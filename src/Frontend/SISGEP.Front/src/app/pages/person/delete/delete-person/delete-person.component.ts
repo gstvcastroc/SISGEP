@@ -36,9 +36,8 @@ export class DeletePersonComponent implements OnInit {
     this.http.delete(url, { headers })
       .subscribe({
         next: (response) => {
-          //console.log('Delete successful!', response);
-          this.router.navigate(['/person']);
           alert("Dado excluído com sucesso!")
+          window.location.reload();
         },
         error: (error) => {
           console.error('Error:', error);

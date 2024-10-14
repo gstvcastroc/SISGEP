@@ -31,15 +31,13 @@ namespace SISGEP.Application.Data.Repositories
                 case Type personType when personType == typeof(Person):
 
                     var person = await _context.Persons
+                        .Include(person => person.Address)
                         .Include(person => person.Projects)
                         .Include(person => person.FilledSurveys)
                         .FirstOrDefaultAsync(person => person.PersonId == id);
 
-                    if (person is null)
-                    {
+                    if (person is null) 
                         return null;
-
-                    }
 
                     return (T)Convert.ChangeType(person, typeof(Person));
 

@@ -69,9 +69,8 @@ export class AlterPersonComponent implements OnInit {
       this.http.put(url, formData, { headers })
         .subscribe({
           next: (response) => {
-            //console.log('Update successful!', response);
-            this.router.navigate(['/person']);
             alert('Dados atualizados com sucesso!');
+            window.location.reload();
           },
           error: (error) => {
             console.error('Error:', error);

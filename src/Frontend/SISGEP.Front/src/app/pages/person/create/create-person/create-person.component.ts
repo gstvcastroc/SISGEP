@@ -47,16 +47,14 @@ export class CreatePersonComponent implements OnInit {
     debugger;
     if (this.personForm.valid) {
       const formData = this.personForm.value;
-      //console.log('Form Data: ', formData);
-
       this.closeModal('dismiss');
 
       this.http.post(`/api/Person`, formData)
       .subscribe({
         next: (response) => {
           console.log('Success!', response);
-          this.router.navigate(['/person']);
           alert("Dados salvos com sucesso!")
+          window.location.reload();
         },
         error: (error) => {
           console.error('Error!', error);
